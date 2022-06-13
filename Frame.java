@@ -1,4 +1,5 @@
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class Frame {
 	Frame() {
@@ -7,6 +8,10 @@ public class Frame {
 		janela.setJMenuBar(menu);
 		janela.setVisible(true);
 		janela.setSize(1000, 1000);
-		janela.setLayout(null);
+		janela.setLayout(new BorderLayout());
+		
+		JLabel status = new JLabel("Status");
+		janela.add(status, BorderLayout.SOUTH);
 	}
 }
+ 
