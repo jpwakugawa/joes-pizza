@@ -1,32 +1,53 @@
 import javax.swing.*;
 import java.awt.*;
 
+// Janela para realizar READ do Cliente
 public class ClienteJanela extends JFrame {
 	ClienteJanela() {
-		prepararJanela();
-		organizarComponentes();
-		setVisible(true);
+		configJanela();
+		configComponente();
+		configEvento();
+		end();
 	}
 	
-	public void prepararJanela() {
+	private void configJanela() {
 		setSize(500, 500);
 		setLayout(null);
 	}
 	
-	public void organizarComponentes() {
-		JTextField nome, cpf, endereco;
+	private void configComponente() {
+		JLabel nomeLabel, cpfLabel, enderecoLabel;
+		JTextField nomeText, cpfText, enderecoText;
+		JButton submitButton;
 		
-		nome = new JTextField("Nome: ");
-		nome.setBounds(50, 100, 200, 30);
+		nomeLabel = new JLabel("Nome: ");
+		nomeLabel.setBounds(30, 100, 200, 30);
+		nomeText = new JTextField();
+		nomeText.setBounds(110, 100, 200, 30);
 		
-		cpf = new JTextField("CPF: ");
-		cpf.setBounds(50, 150, 200, 30);
+		cpfLabel = new JLabel("CPF: ");
+		cpfLabel.setBounds(30, 150, 200, 30);
+		cpfText = new JTextField();
+		cpfText.setBounds(110, 150, 200, 30);
 		
-		endereco = new JTextField("Endereço: ");
-		endereco.setBounds(50, 200, 200, 30);
+		enderecoLabel = new JLabel("Endereço: ");
+		enderecoLabel.setBounds(30, 200, 200, 30);
+		enderecoText = new JTextField();
+		enderecoText.setBounds(110, 200, 200, 30);
 		
-		add(nome);add(cpf);add(endereco);
+		submitButton = new JButton("submit");
+		submitButton.setBounds(110, 250, 200, 30);
+		
+		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
+		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
 	}
 	
+	private void configEvento() {
+		
+	}
+	
+	private void end() {
+		setVisible(true);
+	}
 	
 }
