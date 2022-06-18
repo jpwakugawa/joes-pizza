@@ -51,6 +51,7 @@ public class ClienteCreateFrame extends JFrame {
 	         if( command.equals( "submit" ) )  {
 	            novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
 	            status.setText("Novo Cliente Criado!");
+	            System.out.println(novoCliente.getListaDeClientes());
 	         }
 	   }	
    }
