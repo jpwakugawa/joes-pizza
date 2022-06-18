@@ -2,25 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// Janela para realizar CREATE do Cliente
-public class ClienteJanela extends JFrame {
-	JLabel nomeLabel, cpfLabel, enderecoLabel;
+// Painel para realizar cadastro do Cliente
+public class ClienteCreateFrame extends JFrame {
+	JLabel nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField nomeText, cpfText, enderecoText;
 	JButton submitButton;
+	Cliente novoCliente;
 
-	ClienteJanela() {
-		configJanela();
-		configComponente();
-		configEvento();
-		end();
-	}
-	
-	private void configJanela() {
+	ClienteCreateFrame(JLabel status) {
+		setTitle("Cadastro de Cliente");
 		setSize(500, 500);
 		setLayout(null);
-	}
-	
-	private void configComponente() {		
+		
+		this.status = status;
+		status.setText("Cadastrando novo cliente.");
+		
+		setBounds(500, 500, 500, 500);	
 		nomeLabel = new JLabel("Nome: ");
 		nomeLabel.setBounds(30, 100, 200, 30);
 		nomeText = new JTextField();
@@ -42,23 +39,19 @@ public class ClienteJanela extends JFrame {
 		
 		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
-	}
-	
-	private void configEvento() {
-		 
-	}
-	
-	private void end() {
+		
 		setVisible(true);
 	}
+	
 	
    private class ButtonClickListener implements ActionListener{
 	      public void actionPerformed(ActionEvent e) {
 	         String command = e.getActionCommand();  
 
 	         if( command.equals( "submit" ) )  {
-	            nomeLabel.setText("Submit Button clicked.");
-	         } 
+	            novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+	            status.setText("Novo Cliente Criado!");
+	         }
 	   }	
    }
 }

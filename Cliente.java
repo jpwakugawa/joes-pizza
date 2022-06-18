@@ -1,7 +1,13 @@
 public class Cliente {
   private String nome;
   private String endereco;
-  private int cpf;
+  private String cpf;
+  
+  Cliente(String nome, String endereco, String cpf) {
+	  setNome(nome);
+	  setEndereco(endereco);
+	  setCpf(cpf);
+  }
   
   public String getNome() {
   	return nome;
@@ -15,10 +21,14 @@ public class Cliente {
   public void setEndereco(String endereco) {
   	this.endereco = endereco;
   }
-  public int getCpf() {
+  public String getCpf() {
   	return cpf;
   }
-  public void setCpf(int cpf) {
+  public void setCpf(String cpf) {
   	this.cpf = cpf;
+  }
+  
+  public String toString() {
+	  return String.format("Nome: %s | Endereço: %s | CPF: %s", nome, endereco, cpf);
   }
 }

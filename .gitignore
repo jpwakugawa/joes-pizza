@@ -7,3 +7,9 @@
 /Menu.class
 /Main.class
 /ClienteJanela.class
+/ClienteJanela$ButtonClickListener.class
+/MainFrame.class
+/ClienteCreatePanel$ButtonClickListener.class
+/ClienteCreatePanel.class
+/ClienteCreateFrame$ButtonClickListener.class
+/ClienteCreateFrame.class
