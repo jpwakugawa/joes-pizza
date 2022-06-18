@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-// Janela para realizar READ do Cliente
+// Janela para realizar CREATE do Cliente
 public class ClienteJanela extends JFrame {
+	JLabel nomeLabel, cpfLabel, enderecoLabel;
+	JTextField nomeText, cpfText, enderecoText;
+	JButton submitButton;
+
 	ClienteJanela() {
 		configJanela();
 		configComponente();
@@ -15,11 +20,7 @@ public class ClienteJanela extends JFrame {
 		setLayout(null);
 	}
 	
-	private void configComponente() {
-		JLabel nomeLabel, cpfLabel, enderecoLabel;
-		JTextField nomeText, cpfText, enderecoText;
-		JButton submitButton;
-		
+	private void configComponente() {		
 		nomeLabel = new JLabel("Nome: ");
 		nomeLabel.setBounds(30, 100, 200, 30);
 		nomeText = new JTextField();
@@ -37,17 +38,27 @@ public class ClienteJanela extends JFrame {
 		
 		submitButton = new JButton("submit");
 		submitButton.setBounds(110, 250, 200, 30);
+		submitButton.addActionListener(new ButtonClickListener());
 		
 		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
 	}
 	
 	private void configEvento() {
-		
+		 
 	}
 	
 	private void end() {
 		setVisible(true);
 	}
 	
+   private class ButtonClickListener implements ActionListener{
+	      public void actionPerformed(ActionEvent e) {
+	         String command = e.getActionCommand();  
+
+	         if( command.equals( "submit" ) )  {
+	            nomeLabel.setText("Submit Button clicked.");
+	         } 
+	   }	
+   }
 }
