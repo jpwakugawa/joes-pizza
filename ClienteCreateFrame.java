@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 // Painel para realizar cadastro do Cliente
@@ -15,7 +14,7 @@ public class ClienteCreateFrame extends JFrame {
 		setLayout(null);
 		
 		this.status = status;
-		status.setText("Cadastrando novo cliente.");
+		status.setText("Cadastrando novo cliente");
 		
 		setBounds(500, 500, 500, 500);	
 		nomeLabel = new JLabel("Nome: ");
@@ -41,6 +40,12 @@ public class ClienteCreateFrame extends JFrame {
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
 		
 		setVisible(true);
+		
+		addWindowListener(new WindowAdapter(){
+	        public void windowClosing(WindowEvent e){
+	            status.setText("Status");
+	        }
+	    });
 	}
 	
 	

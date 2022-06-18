@@ -17,6 +17,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		create = new JMenuItem("Create");
 		create.addActionListener(this);
 		read = new JMenuItem("Read");
+		read.addActionListener(this);
 		update = new JMenuItem("Update");
 		delete = new JMenuItem("Delete");
 		
@@ -34,6 +35,9 @@ public class Menu extends JMenuBar implements ActionListener {
 	public void actionPerformed(ActionEvent e) {    
 		if(e.getSource()==create) {
 			new ClienteCreateFrame(status);
+		}
+		else if(e.getSource()==read) {
+			new ClienteReadFrame(status);
 		}
 	}   
 }

@@ -5,6 +5,8 @@ public class Cliente {
   static Cliente[] listaDeClientes = new Cliente[10];
   static int nClientes = 0;
   
+  Cliente() {}
+  
   Cliente(String nome, String endereco, String cpf) {
 	  setNome(nome);
 	  setEndereco(endereco);
