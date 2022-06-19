@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-// Painel para realizar cadastro do Cliente
+// Janela para realizar cadastro de cliente
 public class ClienteCreateFrame extends JFrame {
 	JLabel nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField nomeText, cpfText, enderecoText;
@@ -9,14 +9,21 @@ public class ClienteCreateFrame extends JFrame {
 	Cliente novoCliente;
 
 	ClienteCreateFrame(JLabel status) {
+		this.status = status;
+		configJanela();
+		configComponente();
+		configEvento();
+		end();
+	}
+	
+	private void configJanela() {
 		setTitle("Cadastro de Cliente");
 		setSize(500, 500);
 		setLayout(null);
-		
-		this.status = status;
 		status.setText("Cadastrando novo cliente");
-		
-		setBounds(500, 500, 500, 500);	
+	}
+	
+	private void configComponente() {
 		nomeLabel = new JLabel("Nome: ");
 		nomeLabel.setBounds(30, 100, 200, 30);
 		nomeText = new JTextField();
@@ -38,9 +45,9 @@ public class ClienteCreateFrame extends JFrame {
 		
 		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
-		
-		setVisible(true);
-		
+	}
+	
+	private void configEvento() {
 		addWindowListener(new WindowAdapter(){
 	        public void windowClosing(WindowEvent e){
 	            status.setText("Status");
@@ -48,14 +55,17 @@ public class ClienteCreateFrame extends JFrame {
 	    });
 	}
 	
+	private void end() {
+		setVisible(true);
+	}
 	
-   private class ButtonClickListener implements ActionListener{
-	      public void actionPerformed(ActionEvent e) {
-	         String command = e.getActionCommand();  
+	private class ButtonClickListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();  
 
-	         if( command.equals( "submit" ) )  {
-	            novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
-	            status.setText("Novo Cliente Criado!");
+			if( command.equals( "submit" ) )  {
+				novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+				status.setText("Novo Cliente Criado!");
 	            System.out.println(novoCliente.getListaDeClientes());
 	         }
 	   }	
