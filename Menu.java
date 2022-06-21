@@ -26,6 +26,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		cliente.add(delete);
 		
 		cadastrarFP = new JMenuItem("Cadastrar");
+		cadastrarFP.addActionListener(this);
 		visualizarFP = new JMenuItem("Visualizar");
 		editarFP = new JMenuItem("Editar");
 		deletarFP = new JMenuItem("Deletar");
@@ -44,6 +45,8 @@ public class Menu extends JMenuBar implements ActionListener {
 	public void actionPerformed(ActionEvent e) {    
 		if(e.getSource()==create) {
 			new ClienteCreateFrame(status);
+		} else if(e.getSource()==cadastrarFP) {
+			new FormaDePagamentoCreateFrame(status);
 		}
 	}   
 }
