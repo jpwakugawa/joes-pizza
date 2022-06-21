@@ -2,29 +2,62 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Menu extends JMenuBar implements ActionListener {
-	JMenu cliente, pedido, pizza, formaDePagamento;
-	JMenuItem create, read, update, delete, cadastrarFP, visualizarFP, editarFP, deletarFP;
-	JLabel status;
+	JLabel    status;
+	JMenu     submenuCliente, submenuPedido, submenuPizza, submenuFP;
+	JMenuItem createCliente, readCliente, updateCliente, deleteCliente;
+	JMenuItem cadastrarFP, visualizarFP, editarFP, deletarFP;
 	
 	Menu(JLabel status){
 		this.status = status;
+		submenuCliente();
+		submenuPedido();
+		submenuPizza();
+		submenuFP();
+	}
+	
+	// Acões a serem tomadas quando clicamos nos itens do Menu
+	public void actionPerformed(ActionEvent e) {    
+		if(e.getSource()==createCliente) {
+			new ClienteCreateFrame(status);
+		}
+		else if(e.getSource()==readCliente) {
+			new ClienteReadFrame(status);
+		}
+		else if(e.getSource()==cadastrarFP) {
+			new FormaDePagamentoCreateFrame(status);
+		}
+	}
+	
+	public void submenuCliente() {
+		submenuCliente = new JMenu("Cliente");
 		
-		cliente = new JMenu("Cliente");
-		pedido = new JMenu("Pedido");
-		pizza = new JMenu("Pizza");
-		formaDePagamento = new JMenu("Forma de pagamento");
+		createCliente = new JMenuItem("Cadastrar");
+		createCliente.addActionListener(this);
+		readCliente = new JMenuItem("Vizualizar");
+		readCliente.addActionListener(this);
+		updateCliente = new JMenuItem("Editar");
+		deleteCliente = new JMenuItem("Deletar");
 		
-		create = new JMenuItem("Create");
-		create.addActionListener(this);
-		read = new JMenuItem("Read");
-		read.addActionListener(this);
-		update = new JMenuItem("Update");
-		delete = new JMenuItem("Delete");
+		submenuCliente.add(createCliente);
+		submenuCliente.add(readCliente);
+		submenuCliente.add(updateCliente);
+		submenuCliente.add(deleteCliente);
 		
-		cliente.add(create);
-		cliente.add(read);
-		cliente.add(update);
-		cliente.add(delete);
+		this.add(submenuCliente);
+	}
+	
+	public void submenuPedido() {
+		submenuPedido = new JMenu("Pedido");
+		this.add(submenuPedido);
+	}
+	
+	public void submenuPizza() {
+		submenuPizza = new JMenu("Pizza");
+		this.add(submenuPizza);
+	}
+	
+	public void submenuFP() {
+		submenuFP = new JMenu("Forma de pagamento");
 		
 		cadastrarFP = new JMenuItem("Cadastrar");
 		cadastrarFP.addActionListener(this);
@@ -32,25 +65,11 @@ public class Menu extends JMenuBar implements ActionListener {
 		editarFP = new JMenuItem("Editar");
 		deletarFP = new JMenuItem("Deletar");
 		
-		formaDePagamento.add(cadastrarFP);
-		formaDePagamento.add(visualizarFP);
-		formaDePagamento.add(editarFP);
-		formaDePagamento.add(deletarFP);
+		submenuFP.add(cadastrarFP);
+		submenuFP.add(visualizarFP);
+		submenuFP.add(editarFP);
+		submenuFP.add(deletarFP);
 		
-		this.add(cliente);
-		this.add(pedido);
-		this.add(pizza);
-		this.add(formaDePagamento);
+		this.add(submenuFP);
 	}
-	
-	public void actionPerformed(ActionEvent e) {    
-		if(e.getSource()==create) {
-			new ClienteCreateFrame(status);
-		} else if(e.getSource()==cadastrarFP) {
-			new FormaDePagamentoCreateFrame(status);
-		}
-		else if(e.getSource()==read) {
-			new ClienteReadFrame(status);
-		}
-	}   
 }
