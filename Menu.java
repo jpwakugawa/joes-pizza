@@ -17,13 +17,19 @@ public class Menu extends JMenuBar implements ActionListener {
 	}
 	
 	// Acões a serem tomadas quando clicamos nos itens do Menu
-	public void actionPerformed(ActionEvent e) {    
+	public void actionPerformed(ActionEvent e) {
+		// Janelas Cliente
 		if(e.getSource()==createCliente) {
 			new ClienteCreateFrame(status);
 		}
 		else if(e.getSource()==readCliente) {
 			new ClienteReadFrame(status);
 		}
+		else if(e.getSource()==updateCliente) {
+			new ClienteUpdateFrame(status);
+		}
+		
+		// Janelas Forma de Pagamento
 		else if(e.getSource()==cadastrarFP) {
 			new FormaDePagamentoCreateFrame(status);
 		}
@@ -39,8 +45,10 @@ public class Menu extends JMenuBar implements ActionListener {
 		readCliente.addActionListener(this);
 		
 		updateCliente = new JMenuItem("Editar");
+		updateCliente.addActionListener(this);
 		
 		deleteCliente = new JMenuItem("Deletar");
+		deleteCliente.addActionListener(this);
 		
 		submenuCliente.add(createCliente);
 		submenuCliente.add(readCliente);

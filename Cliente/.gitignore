@@ -4,3 +4,6 @@
 /ClienteCreateFrame.class
 /ClienteReadFrame$1.class
 /ClienteReadFrame.class
+/ClienteUpdateFrame.class
+/ClienteUpdateFrame$1.class
+/ClienteUpdateFrame$ButtonClickListener.class

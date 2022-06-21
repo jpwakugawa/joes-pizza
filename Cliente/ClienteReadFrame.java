@@ -17,7 +17,7 @@ public class ClienteReadFrame extends JFrame {
 	
 	private void configJanela() {
 		setTitle("Lista de Clientes");
-		setSize(1000, 1000);
+		setSize(1000, 800);
 		setLayout(null);
 		status.setText("Listando Clientes");
 	}
