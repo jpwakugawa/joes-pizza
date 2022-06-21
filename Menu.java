@@ -3,7 +3,7 @@ import java.awt.event.*;
 
 public class Menu extends JMenuBar implements ActionListener {
 	JMenu cliente, pedido, pizza, formaDePagamento;
-	JMenuItem create, read, update, delete;
+	JMenuItem create, read, update, delete, cadastrarFP, visualizarFP, editarFP, deletarFP;
 	JLabel status;
 	
 	Menu(JLabel status){
@@ -24,6 +24,16 @@ public class Menu extends JMenuBar implements ActionListener {
 		cliente.add(read);
 		cliente.add(update);
 		cliente.add(delete);
+		
+		cadastrarFP = new JMenuItem("Cadastrar");
+		visualizarFP = new JMenuItem("Visualizar");
+		editarFP = new JMenuItem("Editar");
+		deletarFP = new JMenuItem("Deletar");
+		
+		formaDePagamento.add(cadastrarFP);
+		formaDePagamento.add(visualizarFP);
+		formaDePagamento.add(editarFP);
+		formaDePagamento.add(deletarFP);
 		
 		this.add(cliente);
 		this.add(pedido);
