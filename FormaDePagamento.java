@@ -1,6 +1,7 @@
 public class FormaDePagamento{
   private String tipo;
   private String moeda;
+  private String ativo;
 
   public String getTipo(){
     return tipo;
@@ -17,4 +18,13 @@ public class FormaDePagamento{
   public void setMoeda(String moeda){
     this.moeda = moeda;
   }
+
+  public String getAtivo() {
+	return ativo;
+  }
+	
+  public void setAtivo(String ativo) {
+	this.ativo = ativo;
+  }
+  
 }
