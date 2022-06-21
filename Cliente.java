@@ -1,4 +1,5 @@
 public class Cliente {
+  private int id;
   private String nome;
   private String endereco;
   private String cpf;
@@ -8,12 +9,19 @@ public class Cliente {
   Cliente() {}
   
   Cliente(String nome, String endereco, String cpf) {
+	  setId();
 	  setNome(nome);
 	  setEndereco(endereco);
 	  setCpf(cpf);
 	  addCliente(this);
   }
   
+  public int getId() {
+	  return id;
+  }
+  public void setId() {
+	  this.id = nClientes;
+  }
   public String getNome() {
   	return nome;
   }
@@ -34,7 +42,7 @@ public class Cliente {
   }
   
   public String toString() {
-	  return String.format("Nome: %s | Endereço: %s | CPF: %s", nome, endereco, cpf);
+	  return String.format("Id: %d | Nome: %s | Endereço: %s | CPF: %s", id, nome, endereco, cpf);
   }
   
   public void addCliente(Cliente novoCliente) {

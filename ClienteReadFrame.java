@@ -3,8 +3,8 @@ import java.awt.event.*;
 
 // Janela para mostrar lista de clientes
 public class ClienteReadFrame extends JFrame {
+	JLabel    status;
 	JTextArea area;
-	JLabel status;
 	
 	ClienteReadFrame(JLabel status) {
 		this.status = status;
@@ -16,7 +16,7 @@ public class ClienteReadFrame extends JFrame {
 	
 	private void configJanela() {
 		setTitle("Lista de Clientes");
-		setSize(500, 500);
+		setSize(1000, 1000);
 		setLayout(null);
 		status.setText("Listando Clientes");
 	}
@@ -32,7 +32,7 @@ public class ClienteReadFrame extends JFrame {
 			area = new JTextArea(cliente.getListaDeClientes());
 		}
 		
-		area.setBounds(50, 50, 300, 300);
+		area.setBounds(50, 50, 900, 500);
 		add(area);
 	}
 	
