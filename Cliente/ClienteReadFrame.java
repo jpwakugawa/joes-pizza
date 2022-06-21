@@ -1,3 +1,4 @@
+package Cliente;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -6,7 +7,7 @@ public class ClienteReadFrame extends JFrame {
 	JLabel    status;
 	JTextArea area;
 	
-	ClienteReadFrame(JLabel status) {
+	public ClienteReadFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();

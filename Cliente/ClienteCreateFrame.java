@@ -1,3 +1,4 @@
+package Cliente;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -8,7 +9,7 @@ public class ClienteCreateFrame extends JFrame {
 	JButton submitButton;
 	Cliente novoCliente;
 
-	ClienteCreateFrame(JLabel status) {
+	public ClienteCreateFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();

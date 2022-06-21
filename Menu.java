@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
+import Cliente.*;
 
 public class Menu extends JMenuBar implements ActionListener {
 	JLabel    status;
@@ -33,9 +34,12 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		createCliente = new JMenuItem("Cadastrar");
 		createCliente.addActionListener(this);
-		readCliente = new JMenuItem("Vizualizar");
+		
+		readCliente = new JMenuItem("Visualizar");
 		readCliente.addActionListener(this);
+		
 		updateCliente = new JMenuItem("Editar");
+		
 		deleteCliente = new JMenuItem("Deletar");
 		
 		submenuCliente.add(createCliente);

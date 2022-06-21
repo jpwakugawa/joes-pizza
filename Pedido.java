@@ -1,3 +1,5 @@
+import Cliente.Cliente;
+
 public class Pedido {
   private int id;
   private Pizza pizza;
