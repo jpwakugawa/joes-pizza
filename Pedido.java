@@ -1,4 +1,5 @@
 import Cliente.Cliente;
+import FormaDePagamento.*;
 
 public class Pedido {
   private int id;

@@ -1,3 +1,4 @@
+package FormaDePagamento;
 import javax.swing.*;
 
 public class FormaDePagamentoCreateFrame extends JFrame {
@@ -7,7 +8,7 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 	JLabel       tipoLabel, moedaLabel, status;
 	JRadioButton realRadioB, dolarRadioB, guaraniRadioB;
 	
-	FormaDePagamentoCreateFrame(JLabel status){
+	public FormaDePagamentoCreateFrame(JLabel status){
 		setTitle("Cadastro de Forma de Pagamento");
 		setSize(500, 500);
 		setLayout(null);

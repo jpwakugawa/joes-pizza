@@ -1,4 +1,6 @@
+package FormaDePagamento;
 public class FormaDePagamento{
+	
   private String tipo;
   private String moeda;
   private String ativo;
