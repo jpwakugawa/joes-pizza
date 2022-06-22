@@ -1,21 +1,36 @@
 package FormaDePagamento;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 
 public class FormaDePagamentoCreateFrame extends JFrame {
-	JTextField   tipoText;
-	JCheckBox    ativoCheckB;
-	JButton      salvarButton;
-	JLabel       tipoLabel, moedaLabel, status;
-	JRadioButton realRadioB, dolarRadioB, guaraniRadioB;
+	JTextField       tipoText;
+	JCheckBox        ativoCheckB;
+	JButton          salvarButton;
+	FormaDePagamento novaFP;
+	String           tipoMoeda, ativoTF;
+	JLabel           tipoLabel, moedaLabel, status;
+	JRadioButton     realRadioB, dolarRadioB, guaraniRadioB;
 	
 	public FormaDePagamentoCreateFrame(JLabel status){
+		this.status = status;
+		configJanela();
+		configComponente();
+		configEvento();
+		end();
+	}
+	
+	private void configJanela() {
 		setTitle("Cadastro de Forma de Pagamento");
 		setSize(500, 500);
 		setLayout(null);
-		
-		this.status = status;
 		status.setText("Cadastrando nova Forma de Pagamento");
-		
+	}
+	
+	private void configComponente() {
 		setBounds(500, 500, 500, 500);
 		tipoLabel     = new JLabel("Descrição:");
 		tipoLabel.setBounds(30, 100, 200, 30);
@@ -44,13 +59,53 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 		
 		salvarButton = new JButton("Salvar");
 		salvarButton.setBounds(110, 250, 200, 30);
+		salvarButton.addActionListener(new ButtonClickListener());
 		
 		this.add(tipoLabel); this.add(tipoText);
 		this.add(moedaLabel); this.add(realRadioB); this.add(dolarRadioB); this.add(guaraniRadioB);
 		this.add(ativoCheckB); this.add(salvarButton);
+	}
+	
+	private void configEvento() {
+		addWindowListener(new WindowAdapter(){
+	        public void windowClosing(WindowEvent e){
+	            status.setText("Status");
+	        }
+	    });
+	}
+	
+	private void descricaoButton() {
+		if(realRadioB.isSelected()) {
+			tipoMoeda = "REAL";
+		} else if(dolarRadioB.isSelected()) {
+			tipoMoeda = "DOLAR";
+		} else {
+			tipoMoeda = "GUARANI";
+		}
 		
+		if(ativoCheckB.isSelected()) {
+			ativoTF = "SIM";
+		} else {
+			ativoTF = "NÃO";
+		}
+	}
+	
+	private void end() {
 		setVisible(true);
 	}
+	
+	private class ButtonClickListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();  
+
+			if( command.equals( "Salvar" ) )  {
+				descricaoButton();
+				novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
+				status.setText("Nova Forma de Pagamento Cadastrada!");
+	            System.out.println(novaFP.getListaFP());
+	         }
+	   }	
+   }
 	
 
 }
