@@ -102,6 +102,7 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 				descricaoButton();
 				novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
 				status.setText("Nova Forma de Pagamento Cadastrada!");
+				tipoText.setText("");
 	            System.out.println(novaFP.getListaFP());
 	         }
 	   }	
