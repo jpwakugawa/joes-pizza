@@ -60,4 +60,10 @@ public class Cliente {
 	  
 	  return lista;
   }
+  
+  public void updateLista(int id, String nome, String endereco, String cpf) {
+	  this.listaDeClientes[id].setNome(nome);
+	  this.listaDeClientes[id].setEndereco(endereco);
+	  this.listaDeClientes[id].setCpf(cpf);
+  }
 }

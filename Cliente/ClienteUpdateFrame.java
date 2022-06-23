@@ -7,7 +7,7 @@ public class ClienteUpdateFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField idText, nomeText, cpfText, enderecoText;
 	JButton    submitButton;
-	Cliente    novoCliente;
+	Cliente    cliente;
 	
 	public ClienteUpdateFrame(JLabel status) {
 		this.status = status;
@@ -75,9 +75,16 @@ public class ClienteUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "edit" ) )  {
-				novoCliente = new Cliente();
+				cliente = new Cliente();
+				
+				int id = Integer.parseInt(idText.getText());
+				String nome = nomeText.getText();
+				String endereco = enderecoText.getText();
+				String cpf = cpfText.getText();
+				cliente.updateLista(id, nome, endereco, cpf);
+				
 				status.setText("Cliente Editado!");
-	            System.out.println(novoCliente.getListaDeClientes());
+	            System.out.println(cliente.getListaDeClientes());
 	         }
 	   }	
    }
