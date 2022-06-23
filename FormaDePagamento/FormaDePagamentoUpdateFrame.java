@@ -1,35 +1,33 @@
 package FormaDePagamento;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
+import java.awt.event.*;
 import javax.swing.*;
 
-public class FormaDePagamentoCreateFrame extends JFrame {
+public class FormaDePagamentoUpdateFrame extends JFrame {
 	JTextField       tipoText;
 	JCheckBox        ativoCheckB;
-	JButton          salvarButton;
+	JButton          editarButton, cancelarButton;
 	FormaDePagamento novaFP;
 	String           tipoMoeda, ativoTF;
 	JLabel           tipoLabel, moedaLabel, status;
 	JRadioButton     realRadioB, dolarRadioB, guaraniRadioB;
 	
-	public FormaDePagamentoCreateFrame(JLabel status){
+	public FormaDePagamentoUpdateFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();
 		configEvento();
 		end();
 	}
-	
+
 	private void configJanela() {
-		setTitle("Cadastro de Forma de Pagamento");
+		setTitle("Edição de Formas de Pagamento");
 		setSize(500, 500);
 		setLayout(null);
-		status.setText("Cadastrando nova Forma de Pagamento");
+		setLocationRelativeTo(null);
+		status.setText("Editando Formas de Pagamento");
+		
 	}
-	
+
 	private void configComponente() {
 		setBounds(500, 500, 500, 500);
 		tipoLabel     = new JLabel("Descrição:");
@@ -42,7 +40,6 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 		
 		realRadioB    = new JRadioButton("REAL");
 		realRadioB.setBounds(110, 150, 90, 30);
-		realRadioB.setSelected(true);
 		dolarRadioB   = new JRadioButton("DOLAR");
 		dolarRadioB.setBounds(200, 150, 90, 30);
 		guaraniRadioB = new JRadioButton("GUARANI");
@@ -55,58 +52,46 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 		
 		ativoCheckB   = new JCheckBox("Está ativa? ");
 		ativoCheckB.setBounds(110, 200, 200, 30);
-		ativoCheckB.setSelected(true);
 		
-		salvarButton = new JButton("Salvar");
-		salvarButton.setBounds(110, 250, 200, 30);
-		salvarButton.addActionListener(new ButtonClickListener());
+		editarButton = new JButton("Salvar alterações");
+		editarButton.setBounds(110, 250, 200, 30);
+		editarButton.addActionListener(new ButtonClickListener());
+		
+		cancelarButton = new JButton("Cancelar");
+		cancelarButton.setBounds(110, 300, 200, 30);
+		cancelarButton.addActionListener(new ButtonClickListener());
 		
 		this.add(tipoLabel); this.add(tipoText);
 		this.add(moedaLabel); this.add(realRadioB); this.add(dolarRadioB); this.add(guaraniRadioB);
-		this.add(ativoCheckB); this.add(salvarButton);
+		this.add(ativoCheckB); this.add(editarButton); this.add(cancelarButton);
+		
 	}
-	
+
 	private void configEvento() {
 		addWindowListener(new WindowAdapter(){
 	        public void windowClosing(WindowEvent e){
 	            status.setText("Status");
 	        }
 	    });
-	}
-	
-	private void descricaoButton() {
-		if(realRadioB.isSelected()) {
-			tipoMoeda = "REAL";
-		} else if(dolarRadioB.isSelected()) {
-			tipoMoeda = "DOLAR";
-		} else {
-			tipoMoeda = "GUARANI";
-		}
 		
-		if(ativoCheckB.isSelected()) {
-			ativoTF = "SIM";
-		} else {
-			ativoTF = "NÃO";
-		}
 	}
-	
+
 	private void end() {
 		setVisible(true);
+		
 	}
 	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
 			
-			if( command.equals( "Salvar" ) )  {
-				descricaoButton();
-				novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
-				status.setText("Nova Forma de Pagamento Cadastrada!");
-				tipoText.setText("");
-	            System.out.println(novaFP.getListaFP());
+			if( command.equals( "Salvar alterações" ) )  {
+				status.setText("Forma de Pagamento atualizada!");
 	         }
+			else if(command.equals( "Cancelar" )) {
+				tipoText.setText(""); ativoCheckB.setSelected(false);
+				status.setText("Alterações na Forma de Pagamento cancelada!");
+			}
 	   }	
    }
-	
-
 }

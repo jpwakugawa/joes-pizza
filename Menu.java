@@ -37,6 +37,9 @@ public class Menu extends JMenuBar implements ActionListener {
 		else if(e.getSource()==visualizarFP) {
 			new FormaDePagamentoReadFrame(status);
 		}
+		else if(e.getSource()==editarFP) {
+			new FormaDePagamentoUpdateFrame(status);
+		}
 	}
 	
 	public void submenuCliente() {
@@ -80,7 +83,9 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		visualizarFP = new JMenuItem("Visualizar");
 		visualizarFP.addActionListener(this);
+		
 		editarFP = new JMenuItem("Editar");
+		editarFP.addActionListener(this);
 		deletarFP = new JMenuItem("Deletar");
 		
 		submenuFP.add(cadastrarFP);
