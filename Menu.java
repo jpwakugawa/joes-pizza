@@ -29,6 +29,9 @@ public class Menu extends JMenuBar implements ActionListener {
 		else if(e.getSource()==updateCliente) {
 			new ClienteUpdateFrame(status);
 		}
+		else if(e.getSource()==deleteCliente) {
+			new ClienteDeleteFrame(status);
+		}
 		
 		// Janelas Forma de Pagamento
 		else if(e.getSource()==cadastrarFP) {
