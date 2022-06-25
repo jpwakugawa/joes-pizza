@@ -1,3 +1,4 @@
+package Pizza;
 public class Pizza{
     private boolean status;
     private String sabor;

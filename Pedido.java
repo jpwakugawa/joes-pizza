@@ -1,5 +1,6 @@
 import Cliente.Cliente;
 import FormaDePagamento.*;
+import Pizza.Pizza;
 
 public class Pedido {
   private int id;
