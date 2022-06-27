@@ -21,24 +21,31 @@ public class Cliente {
   public int getId() {
 	  return id;
   }
+  
   public void setId() {
 	  this.id = nClientes;
   }
+  
   public String getNome() {
   	return nome;
   }
+  
   public void setNome(String nome) {
   	this.nome = nome;
   }
+  
   public String getEndereco() {
   	return endereco;
   }
+  
   public void setEndereco(String endereco) {
   	this.endereco = endereco;
   }
+  
   public String getCpf() {
   	return cpf;
   }
+  
   public void setCpf(String cpf) {
   	this.cpf = cpf;
   }
@@ -55,7 +62,10 @@ public class Cliente {
 	  String lista = "";
 	  
 	  for(int i=0; i<nClientes; i++) {
-		  lista += listaDeClientes[i].toString() + "\n";
+		  Cliente clienteAtual = listaDeClientes[i];
+		  
+		  if(clienteAtual != null) 
+			  lista += listaDeClientes[i].toString() + "\n";
 	  }
 	  
 	  return lista;
@@ -66,4 +76,9 @@ public class Cliente {
 	  this.listaDeClientes[id].setEndereco(endereco);
 	  this.listaDeClientes[id].setCpf(cpf);
   }
+  
+  public void deleteCliente(int id) {
+	  this.listaDeClientes[id] = null;
+  }
+  
 }

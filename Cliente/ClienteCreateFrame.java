@@ -69,6 +69,6 @@ public class ClienteCreateFrame extends JFrame {
 				status.setText("Novo Cliente Criado!");
 	            System.out.println(novoCliente.getListaDeClientes());
 	         }
-	   }	
+	   }
    }
 }

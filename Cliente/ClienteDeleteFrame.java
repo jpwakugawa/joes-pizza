@@ -2,6 +2,7 @@ package Cliente;
 import java.awt.event.*;
 import javax.swing.*;
 
+// Janela para realizar deleção de cliente
 public class ClienteDeleteFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, status;
 	JTextField idText;
@@ -60,6 +61,8 @@ public class ClienteDeleteFrame extends JFrame {
 				cliente = new Cliente();
 				
 				int id = Integer.parseInt(idText.getText());
+				cliente.deleteCliente(id);
+				
 				status.setText("Cliente Deletado!");
 	            System.out.println(cliente.getListaDeClientes());
 	         }
