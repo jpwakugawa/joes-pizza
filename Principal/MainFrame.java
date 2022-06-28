@@ -23,7 +23,7 @@ public class MainFrame extends JFrame{
 		Menu menu = new Menu(status);
 		setJMenuBar(menu);
 		
-		add(new JLabel(new ImageIcon("./Assets/joes_pizza.png")));
+		add(new JLabel(new ImageIcon("./Imagens/joes_pizza.png")));
 	}
 	
 	private void configEvento() {
@@ -34,4 +34,3 @@ public class MainFrame extends JFrame{
 		setVisible(true);
 	}
 }
- 
