@@ -2,6 +2,7 @@ package Principal;
 import javax.swing.*;
 import java.awt.event.*;
 import Cliente.*;
+import Pedido.*;
 import FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
@@ -37,7 +38,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		// Janelas Pedido
 		if(e.getSource()==createPedido) {
-			//new PedidoCreateFrame(status);
+			new PedidoCreateFrame(status);
 		}
 		else if(e.getSource()==readPedido) {
 			//new PedidoReadFrame(status);
