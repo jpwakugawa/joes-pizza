@@ -17,12 +17,23 @@ public class Cliente {
 	  setCpf(cpf);
   }
   
+  Cliente(int id, String nome, String endereco, String cpf) {
+	  setId(id);
+	  setNome(nome);
+	  setEndereco(endereco);
+	  setCpf(cpf);
+  }
+  
   public int getId() {
 	  return id;
   }
   
   public void setId() {
 	  this.id = Gerenciador.getListaDeClientes().size();
+  }
+  
+  public void setId(int id) {
+	  this.id = id;
   }
   
   public String getNome() {
@@ -53,15 +64,4 @@ public class Cliente {
 	  return String.format("Id: %d | Nome: %s | Endereço: %s | CPF: %s", id, nome, endereco, cpf);
   }
   
-  /*
-  public void updateLista(int id, String nome, String endereco, String cpf) {
-	  this.listaDeClientes[id].setNome(nome);
-	  this.listaDeClientes[id].setEndereco(endereco);
-	  this.listaDeClientes[id].setCpf(cpf);
-  }
-  
-  public void deleteCliente(int id) {
-	  this.listaDeClientes[id] = null;
-  }
- */
 }
