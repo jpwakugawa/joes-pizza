@@ -61,10 +61,10 @@ public class ClienteDeleteFrame extends JFrame {
 				cliente = new Cliente();
 				
 				int id = Integer.parseInt(idText.getText());
-				cliente.deleteCliente(id);
+				//cliente.deleteCliente(id);
 				
 				status.setText("Cliente Deletado!");
-	            System.out.println(cliente.getListaDeClientes());
+	            //System.out.println(cliente.getListaDeClientes());
 	         }
 		}
    }

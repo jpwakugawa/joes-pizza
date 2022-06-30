@@ -75,6 +75,7 @@ public class ClienteUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "edit" ) )  {
+				/*
 				cliente = new Cliente();
 				
 				int id = Integer.parseInt(idText.getText());
@@ -85,6 +86,7 @@ public class ClienteUpdateFrame extends JFrame {
 				
 				status.setText("Cliente Editado!");
 	            System.out.println(cliente.getListaDeClientes());
+	         	*/
 	         }
 	   }	
    }
