@@ -1,13 +1,15 @@
 package Cliente;
-import java.awt.event.*;
+
 import javax.swing.*;
+import java.awt.event.*;
+import Principal.Gerenciador;
+import java.util.ArrayList;
 
 // Janela para realizar deleção de cliente
 public class ClienteDeleteFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, status;
 	JTextField idText;
 	JButton    submitButton;
-	Cliente    cliente;
 	
 	public ClienteDeleteFrame(JLabel status) {
 		this.status = status;
@@ -58,13 +60,16 @@ public class ClienteDeleteFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "delete" ) )  {
-				cliente = new Cliente();
-				
 				int id = Integer.parseInt(idText.getText());
-				//cliente.deleteCliente(id);
+				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+				listaDeClientes.remove(id);
+				
+				for(int i=0; i<listaDeClientes.size(); i++) {
+					Cliente clienteAtual = listaDeClientes.get(i);
+					clienteAtual.setId(i);
+				}
 				
 				status.setText("Cliente Deletado!");
-	            //System.out.println(cliente.getListaDeClientes());
 	         }
 		}
    }
