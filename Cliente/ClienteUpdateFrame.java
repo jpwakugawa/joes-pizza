@@ -53,7 +53,23 @@ public class ClienteUpdateFrame extends JFrame {
 		
 		submitButton = new JButton("edit");
 		submitButton.setBounds(110, 250, 200, 30);
-		submitButton.addActionListener(new ButtonClickListener());
+		submitButton.addActionListener(
+				(e) -> {
+					String command = e.getActionCommand();  
+
+					if( command.equals( "edit" ) )  {
+						int id = Integer.parseInt(idText.getText());
+						String nome = nomeText.getText();
+						String endereco = enderecoText.getText();
+						String cpf = cpfText.getText();
+						
+						Cliente cliente = new Cliente(id, nome, endereco, cpf);
+						ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+						listaDeClientes.set(id, cliente);
+						
+						status.setText("Cliente Editado!");
+			         }
+				});
 		
 		add(avisoLabel);add(idLabel);add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(idText);add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
@@ -73,22 +89,4 @@ public class ClienteUpdateFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	private class ButtonClickListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
-
-			if( command.equals( "edit" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				String nome = nomeText.getText();
-				String endereco = enderecoText.getText();
-				String cpf = cpfText.getText();
-				
-				Cliente cliente = new Cliente(id, nome, endereco, cpf);
-				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
-				listaDeClientes.set(id, cliente);
-				
-				status.setText("Cliente Editado!");
-	         }
-	   }	
-   }
 }

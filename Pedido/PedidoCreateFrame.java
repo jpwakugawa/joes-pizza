@@ -3,9 +3,9 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class PedidoCreateFrame extends JFrame{
-	JLabel idPizzaLabel, idClienteLabel, status;
+	JLabel     idPizzaLabel, idClienteLabel, status;
 	JTextField idPizzaText, idClienteText;
-	JButton submitButton;
+	JButton    submitButton;
 	
 	public PedidoCreateFrame(JLabel status) {
 		this.status = status;
@@ -35,7 +35,14 @@ public class PedidoCreateFrame extends JFrame{
 		
 		submitButton = new JButton("submit");
 		submitButton.setBounds(150, 250, 200, 30);
-		submitButton.addActionListener(new ButtonClickListener());
+		submitButton.addActionListener(
+				(e) -> {
+					String command = e.getActionCommand();  
+
+					if( command.equals( "submit" ) )  {
+						status.setText("Novo Pedido Criado!");
+			         }
+				});
 		
 		add(idPizzaLabel);add(idClienteLabel);
 		add(idPizzaText);add(idClienteText);add(submitButton);
@@ -53,13 +60,4 @@ public class PedidoCreateFrame extends JFrame{
 		setVisible(true);
 	}
 	
-	private class ButtonClickListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
-
-			if( command.equals( "submit" ) )  {
-				status.setText("Novo Pedido Criado!");
-	         }
-	   }
-   }
 }

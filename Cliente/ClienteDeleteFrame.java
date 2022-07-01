@@ -38,7 +38,23 @@ public class ClienteDeleteFrame extends JFrame {
 		
 		submitButton = new JButton("delete");
 		submitButton.setBounds(110, 150, 200, 30);
-		submitButton.addActionListener(new ButtonClickListener());
+		submitButton.addActionListener(
+				(e) -> {
+					String command = e.getActionCommand();  
+
+					if( command.equals( "delete" ) )  {
+						int id = Integer.parseInt(idText.getText());
+						ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+						listaDeClientes.remove(id);
+						
+						for(int i=0; i<listaDeClientes.size(); i++) {
+							Cliente clienteAtual = listaDeClientes.get(i);
+							clienteAtual.setId(i);
+						}
+						
+						status.setText("Cliente Deletado!");
+			         }
+				});
 		
 		add(avisoLabel);add(idLabel);
 		add(idText);add(submitButton);
@@ -54,24 +70,5 @@ public class ClienteDeleteFrame extends JFrame {
 	private void end() {
 		setVisible(true);
 	}
-	
-	private class ButtonClickListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
-
-			if( command.equals( "delete" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
-				listaDeClientes.remove(id);
-				
-				for(int i=0; i<listaDeClientes.size(); i++) {
-					Cliente clienteAtual = listaDeClientes.get(i);
-					clienteAtual.setId(i);
-				}
-				
-				status.setText("Cliente Deletado!");
-	         }
-		}
-   }
 
 }

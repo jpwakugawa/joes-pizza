@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 // Janela para realizar cadastro de cliente
 public class ClienteCreateFrame extends JFrame {
-	JLabel nomeLabel, cpfLabel, enderecoLabel, status;
+	JLabel     nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField nomeText, cpfText, enderecoText;
-	JButton submitButton;
+	JButton    submitButton;
 
 	public ClienteCreateFrame(JLabel status) {
 		this.status = status;
@@ -44,7 +44,17 @@ public class ClienteCreateFrame extends JFrame {
 		
 		submitButton = new JButton("submit");
 		submitButton.setBounds(110, 250, 200, 30);
-		submitButton.addActionListener(new ButtonClickListener());
+		submitButton.addActionListener(
+				(e) -> {
+					String command = e.getActionCommand();  
+
+					if( command.equals( "submit" ) )  {
+						Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+						ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
+						listaDePedidos.add(novoCliente);
+						status.setText("Novo Cliente Criado!");
+			         }
+				});
 		
 		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
@@ -62,16 +72,4 @@ public class ClienteCreateFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	private class ButtonClickListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
-
-			if( command.equals( "submit" ) )  {
-				Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
-				ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
-				listaDePedidos.add(novoCliente);
-				status.setText("Novo Cliente Criado!");
-	         }
-	   }
-   }
 }
