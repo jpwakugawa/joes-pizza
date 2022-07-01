@@ -1,4 +1,4 @@
-package FormaDePagamento;
+package Entidades;
 
 public class FormaDePagamento{
   private int    id;
@@ -8,9 +8,9 @@ public class FormaDePagamento{
   static  FormaDePagamento[] listaFP = new FormaDePagamento[10];
   static  int nFP = 0;
   
-  FormaDePagamento() {}
+  public FormaDePagamento() {}
   
-  FormaDePagamento(String tipo, String moeda, String ativo){
+  public FormaDePagamento(String tipo, String moeda, String ativo){
 	  setId();
 	  setTipo(tipo);
 	  setMoeda(moeda);
@@ -51,7 +51,7 @@ public class FormaDePagamento{
   }
   
   public String toString() {
-	  return String.format("Id: %d | Descrição: %s | Moeda: %s | Ativo: %s", id, tipo, moeda, ativo);
+	  return String.format("Id: %d | Descriï¿½ï¿½o: %s | Moeda: %s | Ativo: %s", id, tipo, moeda, ativo);
   }
   
   public void addFP(FormaDePagamento novaFP) {

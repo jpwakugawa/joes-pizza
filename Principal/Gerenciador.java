@@ -1,7 +1,7 @@
 package Principal;
-import Cliente.*;
-import Pedido.*;
+
 import java.util.ArrayList;
+import Entidades.*;
 
 public class Gerenciador {
 	static ArrayList<Cliente> listaDeClientes;

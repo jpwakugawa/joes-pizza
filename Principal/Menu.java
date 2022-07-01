@@ -1,9 +1,10 @@
 package Principal;
+
 import javax.swing.*;
 import java.awt.event.*;
-import Cliente.*;
-import Pedido.*;
-import FormaDePagamento.*;
+import Telas.Cliente.*;
+import Telas.Pedido.*;
+import Telas.FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
 	JLabel    status;

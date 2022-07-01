@@ -1,10 +1,10 @@
-package Cliente;
+package Telas.Cliente;
 
 import javax.swing.*;
 import java.awt.event.*;
-import Principal.Gerenciador;
 import java.util.ArrayList;
-
+import Principal.Gerenciador;
+import Entidades.*;
 
 // Janela para editar clientes
 public class ClienteUpdateFrame extends JFrame {

@@ -1,59 +1,59 @@
-package Cliente;
+package Telas.FormaDePagamento;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
-import java.awt.event.*;
-import Principal.Gerenciador;
-import java.util.ArrayList;
 
-// Janela para mostrar lista de clientes
-public class ClienteReadFrame extends JFrame {
+import Entidades.FormaDePagamento;
+
+public class FormaDePagamentoReadFrame extends JFrame{
 	JLabel    status;
 	JTextArea area;
 	
-	public ClienteReadFrame(JLabel status) {
+	public FormaDePagamentoReadFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();
 		configEvento();
 		end();
 	}
-	
+
 	private void configJanela() {
-		setTitle("Lista de Clientes");
+		setTitle("Lista de Formas de Pagamento");
 		setSize(1000, 800);
 		setLayout(null);
-		status.setText("Listando Clientes");
-	}
-	
-	private void configComponente() {
-		ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
-		String lista = "";
+		status.setText("Listando Formas de Pagamento");
 		
-		for(int i=0; i<listaDeClientes.size(); i++) {
-			Cliente clienteAtual = listaDeClientes.get(i);
-			lista += clienteAtual.toString() + "\n";
-		}
+	}
+
+	private void configComponente() {
+		FormaDePagamento FP = new FormaDePagamento();
+		String lista = FP.getListaFP();
 		
 		if (lista.equals("") ) {
 			area = new JTextArea("Nenhum cliente cadastrado...");
 		}
 		else {
-			area = new JTextArea(lista);
+			area = new JTextArea(FP.getListaFP());
 		}
 		
 		area.setBounds(50, 50, 900, 500);
 		add(area);
+		
 	}
-	
+
 	private void configEvento() {
 		addWindowListener(new WindowAdapter(){
 	        public void windowClosing(WindowEvent e){
 	            status.setText("Status");
 	        }
 	    });
+		
 	}
-	
+
 	private void end() {
 		setVisible(true);
+		
 	}
 }

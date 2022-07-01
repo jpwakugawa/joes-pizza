@@ -1,6 +1,8 @@
-package FormaDePagamento;
+package Telas.FormaDePagamento;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Entidades.FormaDePagamento;
 
 public class FormaDePagamentoUpdateFrame extends JFrame {
 	JTextField       tipoText, idText;
@@ -20,7 +22,7 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 	}
 
 	private void configJanela() {
-		setTitle("Edição de Formas de Pagamento");
+		setTitle("Ediï¿½ï¿½o de Formas de Pagamento");
 		setSize(500, 500);
 		setLayout(null);
 		setLocationRelativeTo(null);
@@ -34,7 +36,7 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		idLabel.setBounds(30, 50, 200, 30);
 		idText		  = new JTextField();
 		idText.setBounds(110, 50, 200, 30);
-		tipoLabel     = new JLabel("Descrição:");
+		tipoLabel     = new JLabel("Descriï¿½ï¿½o:");
 		tipoLabel.setBounds(30, 100, 200, 30);
 		tipoText      = new JTextField();
 		tipoText.setBounds(110, 100, 200, 30);
@@ -54,10 +56,10 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		moedas.add(dolarRadioB);
 		moedas.add(guaraniRadioB);
 		
-		ativoCheckB   = new JCheckBox("Está ativa? ");
+		ativoCheckB   = new JCheckBox("Estï¿½ ativa? ");
 		ativoCheckB.setBounds(110, 200, 200, 30);
 		
-		editarButton = new JButton("Salvar alterações");
+		editarButton = new JButton("Salvar alteraï¿½ï¿½es");
 		editarButton.setBounds(110, 250, 200, 30);
 		editarButton.addActionListener(new ButtonClickListener());
 		
@@ -83,7 +85,7 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		if(ativoCheckB.isSelected()) {
 			ativoTF = "SIM";
 		} else {
-			ativoTF = "NÃO";
+			ativoTF = "Nï¿½O";
 		}
 	}
 
@@ -105,13 +107,13 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
 			
-			if( command.equals( "Salvar alterações" ) )  {
+			if( command.equals( "Salvar alteraï¿½ï¿½es" ) )  {
 				descricaoButton();
 				status.setText("Forma de Pagamento atualizada!");
 	         }
 			else if(command.equals( "Cancelar" )) {
 				tipoText.setText(""); ativoCheckB.setSelected(false);
-				status.setText("Alterações na Forma de Pagamento cancelada!");
+				status.setText("Alteraï¿½ï¿½es na Forma de Pagamento cancelada!");
 			}
 	   }	
    }

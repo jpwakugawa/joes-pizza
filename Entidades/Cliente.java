@@ -1,4 +1,4 @@
-package Cliente;
+package Entidades;
 
 import Principal.Gerenciador;
 
@@ -8,16 +8,16 @@ public class Cliente {
   private String endereco;
   private String cpf;
   
-  Cliente() {}
+  public Cliente() {}
   
-  Cliente(String nome, String endereco, String cpf) {
+  public Cliente(String nome, String endereco, String cpf) {
 	  setId();
 	  setNome(nome);
 	  setEndereco(endereco);
 	  setCpf(cpf);
   }
   
-  Cliente(int id, String nome, String endereco, String cpf) {
+  public Cliente(int id, String nome, String endereco, String cpf) {
 	  setId(id);
 	  setNome(nome);
 	  setEndereco(endereco);

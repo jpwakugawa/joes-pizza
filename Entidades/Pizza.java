@@ -1,4 +1,4 @@
-package Pizza;
+package Entidades;
 public class Pizza{
     private boolean status;
     private String sabor;

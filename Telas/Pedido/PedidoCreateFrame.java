@@ -1,4 +1,4 @@
-package Pedido;
+package Telas.Pedido;
 import javax.swing.*;
 import java.awt.event.*;
 
