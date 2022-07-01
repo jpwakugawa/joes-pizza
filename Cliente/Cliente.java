@@ -1,12 +1,12 @@
 package Cliente;
 
+import Principal.Gerenciador;
+
 public class Cliente {
   private int id;
   private String nome;
   private String endereco;
   private String cpf;
-  static Cliente[] listaDeClientes = new Cliente[10];
-  static int nClientes = 0;
   
   Cliente() {}
   
@@ -15,7 +15,13 @@ public class Cliente {
 	  setNome(nome);
 	  setEndereco(endereco);
 	  setCpf(cpf);
-	  addCliente(this);
+  }
+  
+  Cliente(int id, String nome, String endereco, String cpf) {
+	  setId(id);
+	  setNome(nome);
+	  setEndereco(endereco);
+	  setCpf(cpf);
   }
   
   public int getId() {
@@ -23,7 +29,11 @@ public class Cliente {
   }
   
   public void setId() {
-	  this.id = nClientes;
+	  this.id = Gerenciador.getListaDeClientes().size();
+  }
+  
+  public void setId(int id) {
+	  this.id = id;
   }
   
   public String getNome() {
@@ -52,33 +62,6 @@ public class Cliente {
   
   public String toString() {
 	  return String.format("Id: %d | Nome: %s | Endereço: %s | CPF: %s", id, nome, endereco, cpf);
-  }
-  
-  public void addCliente(Cliente novoCliente) {
-	  listaDeClientes[nClientes++] = novoCliente;
-  }
-  
-  public String getListaDeClientes() {
-	  String lista = "";
-	  
-	  for(int i=0; i<nClientes; i++) {
-		  Cliente clienteAtual = listaDeClientes[i];
-		  
-		  if(clienteAtual != null) 
-			  lista += listaDeClientes[i].toString() + "\n";
-	  }
-	  
-	  return lista;
-  }
-  
-  public void updateLista(int id, String nome, String endereco, String cpf) {
-	  this.listaDeClientes[id].setNome(nome);
-	  this.listaDeClientes[id].setEndereco(endereco);
-	  this.listaDeClientes[id].setCpf(cpf);
-  }
-  
-  public void deleteCliente(int id) {
-	  this.listaDeClientes[id] = null;
   }
   
 }

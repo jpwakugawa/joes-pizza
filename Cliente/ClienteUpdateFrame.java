@@ -1,13 +1,16 @@
 package Cliente;
-import java.awt.event.*;
+
 import javax.swing.*;
+import java.awt.event.*;
+import Principal.Gerenciador;
+import java.util.ArrayList;
+
 
 // Janela para editar clientes
 public class ClienteUpdateFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField idText, nomeText, cpfText, enderecoText;
 	JButton    submitButton;
-	Cliente    cliente;
 	
 	public ClienteUpdateFrame(JLabel status) {
 		this.status = status;
@@ -75,16 +78,16 @@ public class ClienteUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "edit" ) )  {
-				cliente = new Cliente();
-				
 				int id = Integer.parseInt(idText.getText());
 				String nome = nomeText.getText();
 				String endereco = enderecoText.getText();
 				String cpf = cpfText.getText();
-				cliente.updateLista(id, nome, endereco, cpf);
+				
+				Cliente cliente = new Cliente(id, nome, endereco, cpf);
+				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+				listaDeClientes.set(id, cliente);
 				
 				status.setText("Cliente Editado!");
-	            System.out.println(cliente.getListaDeClientes());
 	         }
 	   }	
    }

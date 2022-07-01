@@ -1,6 +1,9 @@
 package Cliente;
+
 import javax.swing.*;
 import java.awt.event.*;
+import Principal.Gerenciador;
+import java.util.ArrayList;
 
 // Janela para mostrar lista de clientes
 public class ClienteReadFrame extends JFrame {
@@ -23,14 +26,19 @@ public class ClienteReadFrame extends JFrame {
 	}
 	
 	private void configComponente() {
-		Cliente cliente = new Cliente();
-		String lista = cliente.getListaDeClientes();
+		ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+		String lista = "";
+		
+		for(int i=0; i<listaDeClientes.size(); i++) {
+			Cliente clienteAtual = listaDeClientes.get(i);
+			lista += clienteAtual.toString() + "\n";
+		}
 		
 		if (lista.equals("") ) {
 			area = new JTextArea("Nenhum cliente cadastrado...");
 		}
 		else {
-			area = new JTextArea(cliente.getListaDeClientes());
+			area = new JTextArea(lista);
 		}
 		
 		area.setBounds(50, 50, 900, 500);
