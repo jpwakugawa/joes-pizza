@@ -1,6 +1,10 @@
 package FormaDePagamento;
-import java.awt.event.*;
 import javax.swing.*;
+
+import Principal.Gerenciador;
+
+import java.awt.event.*;
+import java.util.ArrayList;
 
 public class FormaDePagamentoUpdateFrame extends JFrame {
 	JTextField       tipoText, idText;
@@ -106,7 +110,11 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "Salvar alterações" ) )  {
+				int id = Integer.parseInt(idText.getText());
 				descricaoButton();
+				novaFP = new FormaDePagamento(id, tipoText.getText(), tipoMoeda, ativoTF);
+				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+				listaDeFormasDePagamentos.set(id, novaFP);
 				status.setText("Forma de Pagamento atualizada!");
 	         }
 			else if(command.equals( "Cancelar" )) {
