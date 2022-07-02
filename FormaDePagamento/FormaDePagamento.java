@@ -1,12 +1,12 @@
 package FormaDePagamento;
 
+import Principal.Gerenciador;
+
 public class FormaDePagamento{
   private int    id;
   private String tipo;
   private String moeda;
   private String ativo;
-  static  FormaDePagamento[] listaFP = new FormaDePagamento[10];
-  static  int nFP = 0;
   
   FormaDePagamento() {}
   
@@ -15,7 +15,13 @@ public class FormaDePagamento{
 	  setTipo(tipo);
 	  setMoeda(moeda);
 	  setAtivo(ativo);
-	  addFP(this);
+  }
+  
+  FormaDePagamento(int id, String tipo, String moeda, String ativo){
+	  setId(id);
+	  setTipo(tipo);
+	  setMoeda(moeda);
+	  setAtivo(ativo);
   }
   
   public int getId() {
@@ -23,8 +29,12 @@ public class FormaDePagamento{
   }
 
   public void setId() {
-	this.id = nFP;
+	this.id = Gerenciador.getListaDeFormasDePagamentos().size();
   }
+  
+  public void setId(int id) {
+		this.id = id;
+	  }
 
   public String getTipo(){
     return tipo;
@@ -53,19 +63,4 @@ public class FormaDePagamento{
   public String toString() {
 	  return String.format("Id: %d | Descrição: %s | Moeda: %s | Ativo: %s", id, tipo, moeda, ativo);
   }
-  
-  public void addFP(FormaDePagamento novaFP) {
-	  listaFP[nFP++] = novaFP;
-  }
-  
-  public String getListaFP() {
-	  String lista = "";
-	  
-	  for(int i=0; i<nFP; i++) {
-		  lista += listaFP[i].toString() + "\n";
-	  }
-	  
-	  return lista;
-  }
-  
 }

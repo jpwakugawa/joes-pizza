@@ -1,10 +1,9 @@
 package FormaDePagamento;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import Principal.Gerenciador;
 
 public class FormaDePagamentoCreateFrame extends JFrame {
 	JTextField       tipoText;
@@ -101,9 +100,11 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 			if( command.equals( "Salvar" ) )  {
 				descricaoButton();
 				novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
+				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+				listaDeFormasDePagamentos.add(novaFP);
 				status.setText("Nova Forma de Pagamento Cadastrada!");
 				tipoText.setText("");
-	            System.out.println(novaFP.getListaFP());
+	   
 	         }
 	   }	
    }
