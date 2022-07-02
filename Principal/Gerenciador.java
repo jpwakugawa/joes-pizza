@@ -1,11 +1,13 @@
 package Principal;
 import Cliente.*;
 import Pedido.*;
+import FormaDePagamento.*;
 import java.util.ArrayList;
 
 public class Gerenciador {
 	static ArrayList<Cliente> listaDeClientes;
 	static ArrayList<Pedido> listaDePedidos;
+	static  ArrayList<FormaDePagamento> listaDeFormaDePagamentos;
 	
 	private Gerenciador() {}
 	
@@ -21,5 +23,11 @@ public class Gerenciador {
 			listaDePedidos = new ArrayList<Pedido>();
 		}
 		return listaDePedidos;
+	}
+	
+	public static ArrayList<FormaDePagamento> getListaDeFormasDePagamentos(){
+		if(listaDeFormaDePagamentos == null)
+			listaDeFormaDePagamentos = new ArrayList<FormaDePagamento>();
+		return listaDeFormaDePagamentos;
 	}
 }
