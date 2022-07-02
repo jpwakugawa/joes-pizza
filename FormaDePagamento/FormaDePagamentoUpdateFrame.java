@@ -118,10 +118,11 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
 				listaDeFormasDePagamentos.set(id, novaFP);
 				status.setText("Forma de Pagamento atualizada!");
+				idText.setText(""); tipoText.setText(""); ativoCheckB.setSelected(false);
 	         }
 			else if(command.equals( "Cancelar" )) {
 				tipoText.setText(""); ativoCheckB.setSelected(false);
-				status.setText("Alterações na Forma de Pagamento cancelada!");
+				idText.setText(""); status.setText("Alterações na Forma de Pagamento cancelada!");
 			}
 	   }	
    }

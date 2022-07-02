@@ -71,7 +71,7 @@ public class FormaDePagamentoDeleteFrame extends JFrame {
 					FormaDePagamento novaFP = fp;
 					novaFP.setId(fp.getId());
 				}
-				
+				idText.setText("");
 				status.setText("Forma de Pagamento Deletada!");
 	         }
 		}
