@@ -27,13 +27,11 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		setTitle("Edição de Formas de Pagamento");
 		setSize(500, 500);
 		setLayout(null);
-		setLocationRelativeTo(null);
 		status.setText("Editando Formas de Pagamento");
 		
 	}
 
 	private void configComponente() {
-		setBounds(500, 500, 500, 500);
 		idLabel       = new JLabel("ID:");
 		idLabel.setBounds(30, 50, 200, 30);
 		idText		  = new JTextField();

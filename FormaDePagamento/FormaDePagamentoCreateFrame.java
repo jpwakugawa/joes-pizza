@@ -30,7 +30,6 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 	}
 	
 	private void configComponente() {
-		setBounds(500, 500, 500, 500);
 		tipoLabel     = new JLabel("Descrição:");
 		tipoLabel.setBounds(30, 100, 200, 30);
 		tipoText      = new JTextField();
