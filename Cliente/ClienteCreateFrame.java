@@ -1,13 +1,15 @@
 package Cliente;
+
 import javax.swing.*;
 import java.awt.event.*;
+import Principal.Gerenciador;
+import java.util.ArrayList;
 
 // Janela para realizar cadastro de cliente
 public class ClienteCreateFrame extends JFrame {
 	JLabel nomeLabel, cpfLabel, enderecoLabel, status;
 	JTextField nomeText, cpfText, enderecoText;
 	JButton submitButton;
-	Cliente novoCliente;
 
 	public ClienteCreateFrame(JLabel status) {
 		this.status = status;
@@ -65,10 +67,11 @@ public class ClienteCreateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "submit" ) )  {
-				novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+				Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+				ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
+				listaDePedidos.add(novoCliente);
 				status.setText("Novo Cliente Criado!");
-	            System.out.println(novoCliente.getListaDeClientes());
 	         }
-	   }	
+	   }
    }
 }

@@ -1,15 +1,19 @@
 package FormaDePagamento;
-import java.awt.event.*;
 import javax.swing.*;
 
+import Principal.Gerenciador;
+
+import java.awt.event.*;
+import java.util.ArrayList;
+
 public class FormaDePagamentoUpdateFrame extends JFrame {
-	JTextField       tipoText;
+	JTextField       tipoText, idText;
 	JCheckBox        ativoCheckB;
 	JButton          editarButton, cancelarButton;
 	FormaDePagamento novaFP;
 	String           tipoMoeda, ativoTF;
-	JLabel           tipoLabel, moedaLabel, status;
 	JRadioButton     realRadioB, dolarRadioB, guaraniRadioB;
+	JLabel           tipoLabel, moedaLabel, idLabel, status, avisoLabel;
 	
 	public FormaDePagamentoUpdateFrame(JLabel status) {
 		this.status = status;
@@ -23,13 +27,19 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		setTitle("Edição de Formas de Pagamento");
 		setSize(500, 500);
 		setLayout(null);
-		setLocationRelativeTo(null);
 		status.setText("Editando Formas de Pagamento");
 		
 	}
 
 	private void configComponente() {
-		setBounds(500, 500, 500, 500);
+		avisoLabel = new JLabel("Insira o ID da forma de pagamento para deletar!");
+		avisoLabel.setBounds(30, 10, 300, 30);
+		
+		idLabel       = new JLabel("ID:");
+		idLabel.setBounds(30, 50, 200, 30);
+		idText		  = new JTextField();
+		idText.setBounds(110, 50, 200, 30);
+		
 		tipoLabel     = new JLabel("Descrição:");
 		tipoLabel.setBounds(30, 100, 200, 30);
 		tipoText      = new JTextField();
@@ -61,10 +71,26 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		cancelarButton.setBounds(110, 300, 200, 30);
 		cancelarButton.addActionListener(new ButtonClickListener());
 		
-		this.add(tipoLabel); this.add(tipoText);
+		this.add(avisoLabel); this.add(idLabel); this.add(idText); this.add(tipoLabel); this.add(tipoText);
 		this.add(moedaLabel); this.add(realRadioB); this.add(dolarRadioB); this.add(guaraniRadioB);
 		this.add(ativoCheckB); this.add(editarButton); this.add(cancelarButton);
 		
+	}
+	
+	private void descricaoButton() {
+		if(realRadioB.isSelected()) {
+			tipoMoeda = "REAL";
+		} else if(dolarRadioB.isSelected()) {
+			tipoMoeda = "DOLAR";
+		} else {
+			tipoMoeda = "GUARANI";
+		}
+		
+		if(ativoCheckB.isSelected()) {
+			ativoTF = "SIM";
+		} else {
+			ativoTF = "NÃO";
+		}
 	}
 
 	private void configEvento() {
@@ -86,11 +112,17 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "Salvar alterações" ) )  {
+				int id = Integer.parseInt(idText.getText());
+				descricaoButton();
+				novaFP = new FormaDePagamento(id, tipoText.getText(), tipoMoeda, ativoTF);
+				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+				listaDeFormasDePagamentos.set(id, novaFP);
 				status.setText("Forma de Pagamento atualizada!");
+				idText.setText(""); tipoText.setText(""); ativoCheckB.setSelected(false);
 	         }
 			else if(command.equals( "Cancelar" )) {
 				tipoText.setText(""); ativoCheckB.setSelected(false);
-				status.setText("Alterações na Forma de Pagamento cancelada!");
+				idText.setText(""); status.setText("Alterações na Forma de Pagamento cancelada!");
 			}
 	   }	
    }

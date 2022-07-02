@@ -1,9 +1,10 @@
 package FormaDePagamento;
 
+import javax.swing.*;
+import Principal.Gerenciador;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-import javax.swing.*;
+import java.util.ArrayList;
 
 public class FormaDePagamentoReadFrame extends JFrame{
 	JLabel    status;
@@ -26,14 +27,19 @@ public class FormaDePagamentoReadFrame extends JFrame{
 	}
 
 	private void configComponente() {
-		FormaDePagamento FP = new FormaDePagamento();
-		String lista = FP.getListaFP();
+		ArrayList<FormaDePagamento> listaDeFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
+		String lista = "";
+		
+		for(FormaDePagamento fp : listaDeFormasDePagamento) {
+			FormaDePagamento fpAtual = fp;
+			lista += fpAtual.toString() + "\n";
+		}
 		
 		if (lista.equals("") ) {
 			area = new JTextArea("Nenhum cliente cadastrado...");
 		}
 		else {
-			area = new JTextArea(FP.getListaFP());
+			area = new JTextArea(lista);
 		}
 		
 		area.setBounds(50, 50, 900, 500);

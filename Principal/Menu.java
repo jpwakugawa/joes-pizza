@@ -1,12 +1,15 @@
+package Principal;
 import javax.swing.*;
 import java.awt.event.*;
 import Cliente.*;
+import Pedido.*;
 import FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
 	JLabel    status;
 	JMenu     submenuCliente, submenuPedido, submenuPizza, submenuFP;
 	JMenuItem createCliente, readCliente, updateCliente, deleteCliente;
+	JMenuItem createPedido, readPedido, updatePedido, deletePedido;
 	JMenuItem cadastrarFP, visualizarFP, editarFP, deletarFP;
 	
 	Menu(JLabel status){
@@ -33,6 +36,20 @@ public class Menu extends JMenuBar implements ActionListener {
 			new ClienteDeleteFrame(status);
 		}
 		
+		// Janelas Pedido
+		if(e.getSource()==createPedido) {
+			new PedidoCreateFrame(status);
+		}
+		else if(e.getSource()==readPedido) {
+			//new PedidoReadFrame(status);
+		}
+		else if(e.getSource()==updatePedido) {
+			//new ClienteUpdateFrame(status);
+		}
+		else if(e.getSource()==deletePedido) {
+			//new ClienteDeleteFrame(status);
+		}
+		
 		// Janelas Forma de Pagamento
 		else if(e.getSource()==cadastrarFP) {
 			new FormaDePagamentoCreateFrame(status);
@@ -42,6 +59,9 @@ public class Menu extends JMenuBar implements ActionListener {
 		}
 		else if(e.getSource()==editarFP) {
 			new FormaDePagamentoUpdateFrame(status);
+		}
+		else if(e.getSource()==deletarFP) {
+			new FormaDePagamentoDeleteFrame(status);
 		}
 	}
 	
@@ -70,6 +90,23 @@ public class Menu extends JMenuBar implements ActionListener {
 	
 	public void submenuPedido() {
 		submenuPedido = new JMenu("Pedido");
+		createPedido = new JMenuItem("Cadastrar");
+		createPedido.addActionListener(this);
+		
+		readPedido = new JMenuItem("Visualizar");
+		readPedido.addActionListener(this);
+		
+		updatePedido = new JMenuItem("Editar");
+		updatePedido.addActionListener(this);
+		
+		deletePedido = new JMenuItem("Deletar");
+		deletePedido.addActionListener(this);
+		
+		submenuPedido.add(createPedido);
+		submenuPedido.add(readPedido);
+		submenuPedido.add(updatePedido);
+		submenuPedido.add(deletePedido);
+		
 		this.add(submenuPedido);
 	}
 	
@@ -89,7 +126,9 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		editarFP = new JMenuItem("Editar");
 		editarFP.addActionListener(this);
+		
 		deletarFP = new JMenuItem("Deletar");
+		deletarFP.addActionListener(this);
 		
 		submenuFP.add(cadastrarFP);
 		submenuFP.add(visualizarFP);
