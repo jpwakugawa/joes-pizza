@@ -27,7 +27,7 @@ public class FormaDePagamentoDeleteFrame extends JFrame {
 	}
 
 	private void configComponente() {
-		avisoLabel = new JLabel("Insira o ID do cliente para deletar!");
+		avisoLabel = new JLabel("Insira o ID da forma de pagamento para deletar!");
 		avisoLabel.setBounds(30, 10, 300, 30);
 		
 		idLabel       = new JLabel("ID:");

@@ -12,8 +12,8 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 	JButton          editarButton, cancelarButton;
 	FormaDePagamento novaFP;
 	String           tipoMoeda, ativoTF;
-	JLabel           tipoLabel, moedaLabel, idLabel, status;
 	JRadioButton     realRadioB, dolarRadioB, guaraniRadioB;
+	JLabel           tipoLabel, moedaLabel, idLabel, status, avisoLabel;
 	
 	public FormaDePagamentoUpdateFrame(JLabel status) {
 		this.status = status;
@@ -32,10 +32,14 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 	}
 
 	private void configComponente() {
+		avisoLabel = new JLabel("Insira o ID da forma de pagamento para deletar!");
+		avisoLabel.setBounds(30, 10, 300, 30);
+		
 		idLabel       = new JLabel("ID:");
 		idLabel.setBounds(30, 50, 200, 30);
 		idText		  = new JTextField();
 		idText.setBounds(110, 50, 200, 30);
+		
 		tipoLabel     = new JLabel("Descrição:");
 		tipoLabel.setBounds(30, 100, 200, 30);
 		tipoText      = new JTextField();
@@ -67,7 +71,7 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 		cancelarButton.setBounds(110, 300, 200, 30);
 		cancelarButton.addActionListener(new ButtonClickListener());
 		
-		this.add(idLabel); this.add(idText); this.add(tipoLabel); this.add(tipoText);
+		this.add(avisoLabel); this.add(idLabel); this.add(idText); this.add(tipoLabel); this.add(tipoText);
 		this.add(moedaLabel); this.add(realRadioB); this.add(dolarRadioB); this.add(guaraniRadioB);
 		this.add(ativoCheckB); this.add(editarButton); this.add(cancelarButton);
 		
