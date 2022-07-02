@@ -41,7 +41,7 @@ public class Menu extends JMenuBar implements ActionListener {
 			new PedidoCreateFrame(status);
 		}
 		else if(e.getSource()==readPedido) {
-			//new PedidoReadFrame(status);
+			new PedidoReadFrame(status);
 		}
 		else if(e.getSource()==updatePedido) {
 			//new ClienteUpdateFrame(status);
