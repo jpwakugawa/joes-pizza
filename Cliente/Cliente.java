@@ -64,4 +64,8 @@ public class Cliente {
 	  return String.format("Id: %d | Nome: %s | EndereÃ§o: %s | CPF: %s", id, nome, endereco, cpf);
   }
   
+  public String toStringPedido() {
+	  return String.format("Nome: %s | Endereço: %s", nome, endereco);
+  }
+  
 }

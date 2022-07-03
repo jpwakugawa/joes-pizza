@@ -65,6 +65,6 @@ public class FormaDePagamento{
   }
   
   public String toStringPedido() {
-	  return String.format("%s | Moeda: %s", tipo, moeda);
+	  return String.format("Descrição: %s | Moeda: %s", tipo, moeda);
   }
 }
