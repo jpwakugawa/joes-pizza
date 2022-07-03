@@ -2,6 +2,7 @@ package Pedido;
 import Cliente.*;
 import FormaDePagamento.*;
 import Pizza.*;
+import Principal.Gerenciador;
 
 public class Pedido {
   private int id;
@@ -11,8 +12,8 @@ public class Pedido {
   
   Pedido() {}
   
-  Pedido(int id, Pizza pizza, Cliente cliente, FormaDePagamento formaDePagamento) {
-	  setId(id);
+  Pedido(Pizza pizza, Cliente cliente, FormaDePagamento formaDePagamento) {
+	  setId();
 	  setPizza(pizza);
 	  setCliente(cliente);
 	  setFormaDePagamento(formaDePagamento);
@@ -22,8 +23,8 @@ public class Pedido {
   	return id;
   }
   
-  public void setId(int id) {
-  	this.id = id;
+  public void setId() {
+  	this.id = Gerenciador.getListaDePedidos().size();
   }
   
   public Pizza getPizza() {
@@ -48,6 +49,10 @@ public class Pedido {
   
   public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
   	this.formaDePagamento = formaDePagamento;
+  }
+  
+  public String toString() {
+	  return String.format("Id: %d | Cliente: %s | Forma de Pagamento: %s", id, cliente.toString(), formaDePagamento.toStringPedido());
   }
   
 }
