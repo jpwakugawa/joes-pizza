@@ -1,8 +1,8 @@
 package Pedido;
 import javax.swing.*;
-
 import Cliente.Cliente;
 import FormaDePagamento.FormaDePagamento;
+import Pizza.Pizza;
 import Principal.Gerenciador;
 
 import java.awt.event.*;
@@ -14,6 +14,7 @@ public class PedidoCreateFrame extends JFrame{
 	JButton submitButton;
 	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+	ArrayList<Pizza> listaDePizzas = Gerenciador.getListaDePizzas();
 	JComboBox<String> FPCBox, clientesCBox;
 	
 	public PedidoCreateFrame(JLabel status) {
