@@ -63,16 +63,21 @@ public class FormaDePagamentoDeleteFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "Deletar" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
-				listaDeFormasDePagamentos.remove(id);
-				
-				for(FormaDePagamento fp : listaDeFormasDePagamentos) {
-					FormaDePagamento novaFP = fp;
-					novaFP.setId(fp.getId());
+				try {
+					int id = Integer.parseInt(idText.getText());
+					ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+					listaDeFormasDePagamentos.remove(id);
+					for(FormaDePagamento fp : listaDeFormasDePagamentos) {
+						FormaDePagamento novaFP = fp;
+						novaFP.setId(fp.getId());
+					}
+			
+					idText.setText("");
+					status.setText("Forma de Pagamento Deletada!");
 				}
-				idText.setText("");
-				status.setText("Forma de Pagamento Deletada!");
+				catch (Exception exception) {
+					status.setText(exception.getMessage());
+				}
 	         }
 		}
    }

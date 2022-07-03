@@ -112,14 +112,20 @@ public class FormaDePagamentoUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "Salvar alterações" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				descricaoButton();
-				novaFP = new FormaDePagamento(id, tipoText.getText(), tipoMoeda, ativoTF);
-				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
-				listaDeFormasDePagamentos.set(id, novaFP);
-				status.setText("Forma de Pagamento atualizada!");
-				idText.setText(""); tipoText.setText(""); ativoCheckB.setSelected(false);
+				try {
+					int id = Integer.parseInt(idText.getText());
+					descricaoButton();
+					novaFP = new FormaDePagamento(id, tipoText.getText(), tipoMoeda, ativoTF);
+					ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+					listaDeFormasDePagamentos.set(id, novaFP);
+					status.setText("Forma de Pagamento atualizada!");
+					idText.setText(""); tipoText.setText(""); ativoCheckB.setSelected(false);
+				}
+				catch (Exception exception) {
+					status.setText(exception.getMessage());
+				}
 	         }
+				
 			else if(command.equals( "Cancelar" )) {
 				tipoText.setText(""); ativoCheckB.setSelected(false);
 				idText.setText(""); status.setText("Alterações na Forma de Pagamento cancelada!");

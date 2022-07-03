@@ -97,12 +97,17 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "Salvar" ) )  {
-				descricaoButton();
-				novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
-				ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
-				listaDeFormasDePagamentos.add(novaFP);
-				status.setText("Nova Forma de Pagamento Cadastrada!");
-				tipoText.setText("");
+				try {
+					descricaoButton();
+					novaFP = new FormaDePagamento(tipoText.getText(), tipoMoeda, ativoTF);
+					ArrayList<FormaDePagamento> listaDeFormasDePagamentos = Gerenciador.getListaDeFormasDePagamentos();
+					listaDeFormasDePagamentos.add(novaFP);
+					status.setText("Nova Forma de Pagamento Cadastrada!");
+					tipoText.setText("");
+				}
+				catch (Exception exception) {
+					status.setText(exception.getMessage());
+				}
 	   
 	         }
 	   }	
