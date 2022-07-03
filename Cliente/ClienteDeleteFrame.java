@@ -60,16 +60,21 @@ public class ClienteDeleteFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "delete" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
-				listaDeClientes.remove(id);
-				
-				for(int i=0; i<listaDeClientes.size(); i++) {
-					Cliente clienteAtual = listaDeClientes.get(i);
-					clienteAtual.setId(i);
+				try {
+					int id = Integer.parseInt(idText.getText());
+					ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+					listaDeClientes.remove(id);
+					
+					for(int i=0; i<listaDeClientes.size(); i++) {
+						Cliente clienteAtual = listaDeClientes.get(i);
+						clienteAtual.setId(i);
+					}
+					
+					status.setText("Cliente Deletado!");					
+				} catch (Exception exception) {
+					status.setText(exception.getMessage());
 				}
-				
-				status.setText("Cliente Deletado!");
+
 	         }
 		}
    }

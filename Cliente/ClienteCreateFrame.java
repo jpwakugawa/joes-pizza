@@ -67,10 +67,15 @@ public class ClienteCreateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "submit" ) )  {
-				Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
-				ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
-				listaDePedidos.add(novoCliente);
-				status.setText("Novo Cliente Criado!");
+				try {
+					Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+					ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
+					listaDePedidos.add(novoCliente);
+					status.setText("Novo Cliente Criado!");	
+				} catch (Exception exception) {
+					status.setText(exception.getMessage());
+				}
+
 	         }
 	   }
    }
