@@ -1,33 +1,22 @@
 package Pizza;
 
-
 public class Pizza{
-	boolean status;
 	private String sabor;
     private double preco;
     static Pizza[] listaDePizza= new Pizza[10];
     static int nPizzas = 0;
     
-    Pizza(String string, String tipoSabor){}
+    Pizza() {}
     
     Pizza(String sabor){
     	setSabor(sabor);
-    	addPizza(this);
-    	
     }
     
-    public Pizza() {
+    Pizza(String sabor, double preco){
+    	setSabor(sabor);
+    	setPreco(preco);
+    }
     
-	}
-
-	public boolean getStatus() {
-      return status;
-    }
-
-    public void setStatus(boolean status) {
-      this.status = status;
-    }
-
     public String getSabor(){
         return sabor;
     }
@@ -45,7 +34,7 @@ public class Pizza{
     }
     
     public String toString() {
-  	  return String.format("sabor: %d | preço: %d |  status: %b", sabor, preco, status);
+  	  return String.format("sabor: %d | preço: %d |  status: %b", sabor, preco);
   	  
     }
     
