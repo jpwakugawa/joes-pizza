@@ -7,8 +7,10 @@ import javax.swing.*;
 import Principal.Gerenciador;
 
 public class PizzaUpdateFrame extends JFrame{
-	JLabel avisoLabel, SaborLabel, precoLabel, status;
-	JTextField SaborText, precoText;
+	JLabel avisoLabel, idLabel, SaborLabel, precoLabel, status;
+	JTextField idText, SaborText, precoText;
+	String  tipoSabor;
+	double preco;
 	JButton armazenarButton;
 	Pizza novaPizza;
 	
@@ -31,6 +33,11 @@ public class PizzaUpdateFrame extends JFrame{
 		avisoLabel = new JLabel("Insira o ID da Pizza para editar!");
 		avisoLabel.setBounds(30, 10, 300, 30);
 		
+		idLabel = new JLabel("Id: ");
+		idLabel.setBounds(30, 50, 200, 30);
+		idText = new JTextField();
+		idText.setBounds(110, 50, 200, 30);
+		
 		SaborLabel = new JLabel("Sabor: ");
 		SaborLabel.setBounds(30, 100, 200, 30);
 		SaborText = new JTextField();
@@ -45,8 +52,8 @@ public class PizzaUpdateFrame extends JFrame{
 		armazenarButton.setBounds(110, 250, 200, 30);
 		armazenarButton.addActionListener(new ButtonClickListener());
 		
-		add(avisoLabel);  add(SaborLabel); add(precoLabel);
-		add(SaborText); add(precoText); add(armazenarButton);
+		add(avisoLabel); add(idLabel); add(SaborLabel); add(precoLabel);
+		add(idText); add(SaborText); add(precoText); add(armazenarButton);
 	}
 	
 	private void configEvento() {
@@ -67,12 +74,12 @@ public class PizzaUpdateFrame extends JFrame{
 			
 			if( command.equals( "edit" ) )  {
 				try {
-					double preco = Double.parseDouble(precoText.getText());
+					int id = Integer.parseInt(idText.getText());
 					String Sabor = SaborText.getText();
 					
-					novaPizza = new Pizza(preco, Sabor);
+					novaPizza = new Pizza(id, Sabor);
 					ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizza();
-					ListaDePizza.set((int) preco, novaPizza);
+					ListaDePizza.set(id, novaPizza);
 					
 					status.setText("Pizza Editada!");
 				}catch (Exception exception) {

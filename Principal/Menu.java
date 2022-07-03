@@ -4,12 +4,13 @@ import javax.swing.*;
 import java.awt.event.*;
 import Cliente.*;
 import Pedido.*;
+<<<<<<< Updated upstream
 import Pizza.*;
-
+=======
 import Pizza.PizzaCreateFrame;
 import Pizza.PizzaReadFrame;
 import Pizza.PizzaUpdateFrame;
-
+>>>>>>> Stashed changes
 import FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
@@ -19,7 +20,7 @@ public class Menu extends JMenuBar implements ActionListener {
 	JMenuItem createPedido, readPedido, updatePedido, deletePedido;
 	JMenuItem createPizza, readPizza, updatePizza, deletePizza;
 	JMenuItem cadastrarFP, visualizarFP, editarFP, deletarFP;
-	
+	JMenuItem cadastrarPizza, visualizarPizza, editarPizza, deletarPizza;
 	
 	Menu(JLabel status){
 		this.status = status;
@@ -60,17 +61,17 @@ public class Menu extends JMenuBar implements ActionListener {
 		}
 		
 		// Janelas Pizza
-		else if(e.getSource()==createPizza) {
+		if(e.getSource()==createPizza) {
 			new PizzaCreateFrame(status);
 		}
 		else if(e.getSource()==readPizza) {
 			new PizzaReadFrame(status);
 		}
 		else if(e.getSource()==updatePizza) {
-			new PizzaUpdateFrame(status);
+			//new PizzaUpdateFrame(status);
 		}
 		else if(e.getSource()==deletePizza) {
-			new PizzaDeleteFrame(status);
+			//new PizzaDeleteFrame(status);
 		}
 		
 		// Janelas Forma de Pagamento
@@ -86,8 +87,23 @@ public class Menu extends JMenuBar implements ActionListener {
 		else if(e.getSource()==deletarFP) {
 			new FormaDePagamentoDeleteFrame(status);
 		}
+		
+		// janelas pizza
+		else if(e.getSource()==cadastrarPizza) {
+			new PizzaCreateFrame(status);
+		}
+		else if(e.getSource()==visualizarPizza) {
+			new PizzaReadFrame(status);
+		}
+		else if(e.getSource()==editarPizza) {
+			new PizzaUpdateFrame(status);
+		}
+		else if(e.getSource()==deletarPizza) {
+			new PizzaUpdateFrame(status);
+		}
 	}
-	
+			
+		
 	public void submenuCliente() {
 		submenuCliente = new JMenu("Cliente");
 		
@@ -135,25 +151,31 @@ public class Menu extends JMenuBar implements ActionListener {
 	
 	public void submenuPizza() {
 		submenuPizza = new JMenu("Pizza");
-		
 		createPizza = new JMenuItem("Cadastrar");
 		createPizza.addActionListener(this);
 		
 		readPizza = new JMenuItem("Visualizar");
 		readPizza.addActionListener(this);
 		
-
+<<<<<<< Updated upstream
 		updatePizza = new JMenuItem("Editar");
 		updatePizza.addActionListener(this);
 		
 		deletePizza = new JMenuItem("Deletar");
+=======
+		deletePizza = new JMenuItem("Editar");
+>>>>>>> Stashed changes
 		deletePizza.addActionListener(this);
 		
 		submenuPizza.add(createPizza);
 		submenuPizza.add(readPizza);
 		submenuPizza.add(updatePizza);
 		submenuPizza.add(deletePizza);
-
+<<<<<<< Updated upstream
+	
+=======
+		
+>>>>>>> Stashed changes
 		this.add(submenuPizza);
 	}
 	
