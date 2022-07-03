@@ -41,13 +41,13 @@ public class Menu extends JMenuBar implements ActionListener {
 			new PedidoCreateFrame(status);
 		}
 		else if(e.getSource()==readPedido) {
-			//new PedidoReadFrame(status);
+			new PedidoReadFrame(status);
 		}
 		else if(e.getSource()==updatePedido) {
-			//new ClienteUpdateFrame(status);
+			new PedidoUpdateFrame(status);
 		}
 		else if(e.getSource()==deletePedido) {
-			//new ClienteDeleteFrame(status);
+			new PedidoDeleteFrame(status);
 		}
 		
 		// Janelas Forma de Pagamento
