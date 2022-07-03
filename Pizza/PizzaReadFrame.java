@@ -33,9 +33,9 @@ public class PizzaReadFrame extends JFrame {
 		ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizza();
 		String lista = "";
 		
-		for(int i=0; i<listaDePizza.size(); i++) {
-			Pizza PizzaAtual = listaDePizza.get(i);
-			lista += PizzaAtual.toString() + "\n";
+		for(Pizza pz : listaDePizza) {
+			Pizza PzAtual = pz;
+			lista += PzAtual.toString() + "\n";
 		}
 		
 		if (lista.equals("") ) {

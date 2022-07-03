@@ -1,22 +1,36 @@
 package Pizza;
 
+import Principal.Gerenciador;
+
 public class Pizza{
+	private double preco;
 	private String sabor;
-    private double preco;
-    static Pizza[] listaDePizza= new Pizza[10];
-    static int nPizzas = 0;
     
-    Pizza() {}
+    
+    Pizza(){}
     
     Pizza(String sabor){
+    	setPreco();
     	setSabor(sabor);
     }
     
-    Pizza(String sabor, double preco){
-    	setSabor(sabor);
+    Pizza(double preco, String sabor) {
     	setPreco(preco);
+    	setSabor(sabor);
+    }
+
+    public double getPreco() {
+    	return preco;
     }
     
+    public void setPreco() {
+    	this.preco = Gerenciador.getListaDePizza().size();
+    }
+    
+    public void setPreco(double preco) {
+    	this.preco = preco;
+    }
+
     public String getSabor(){
         return sabor;
     }
@@ -24,17 +38,9 @@ public class Pizza{
     public void setSabor(String sabor){
         this.sabor = sabor;
     }
-
-    public double getPreco(){
-        return preco;
-    }
-
-    public void setPreco(double preco){
-        this.preco = preco;
-    }
-    
+   
     public String toString() {
-  	  return String.format("sabor: %d | preço: %d |  status: %b", sabor, preco);
+  	  return String.format("sabor: %s | preço: %d ", sabor, preco);
   	  
     }
 }

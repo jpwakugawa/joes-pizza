@@ -39,4 +39,8 @@ public class Gerenciador {
 			listaDeFormaDePagamentos = new ArrayList<FormaDePagamento>();
 		return listaDeFormaDePagamentos;
 	}
+
+	public static ArrayList<Pizza> getListaDePizza() {
+		return null;
+	}
 }

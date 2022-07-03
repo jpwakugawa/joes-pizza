@@ -13,8 +13,6 @@ import java.util.ArrayList;
 public class PizzaCreateFrame extends JFrame {
 	JTextField SaborText, precoText;
 	JLabel SaborLabel, precoLabel, status;
-	String  tipoSabor;
-	double preco;
 	JButton armazenarButton;
 	Pizza novaPizza;
 	
@@ -28,7 +26,7 @@ public class PizzaCreateFrame extends JFrame {
 	
 	private void configJanela() {
 		setTitle("cadastro da pizza");
-		setSize(500,500);
+		setSize(500, 500);
 		setLayout(null);
 		status.setText("cadastrando nova Pizza");
 	}
