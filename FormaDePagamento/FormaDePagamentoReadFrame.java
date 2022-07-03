@@ -36,7 +36,7 @@ public class FormaDePagamentoReadFrame extends JFrame{
 		}
 		
 		if (lista.equals("") ) {
-			area = new JTextArea("Nenhum cliente cadastrado...");
+			area = new JTextArea("Nenhuma forma de pagamento cadastrada...");
 		}
 		else {
 			area = new JTextArea(lista);
