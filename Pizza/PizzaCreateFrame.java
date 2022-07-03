@@ -72,7 +72,7 @@ public class PizzaCreateFrame extends JFrame {
 			if( command.equals( "armazenar" )) {
 				try {
 					novaPizza = new Pizza(SaborText.getText());
-					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizza();
+					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizzas();
 					listaDePizza.add(novaPizza);
 					status.setText("Nova pizza Cadastrada!");
 				}catch(Exception exception) {

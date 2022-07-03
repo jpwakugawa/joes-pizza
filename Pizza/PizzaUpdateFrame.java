@@ -72,13 +72,13 @@ public class PizzaUpdateFrame extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
 			
-			if( command.equals( "edit" ) )  {
+			if( command.equals( "Edit" ) )  {
 				try {
 					int id = Integer.parseInt(idText.getText());
 					String Sabor = SaborText.getText();
 					
 					novaPizza = new Pizza(id, Sabor);
-					ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizza();
+					ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizzas();
 					ListaDePizza.set(id, novaPizza);
 					
 					status.setText("Pizza Editada!");

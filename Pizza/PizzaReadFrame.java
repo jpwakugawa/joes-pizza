@@ -30,7 +30,7 @@ public class PizzaReadFrame extends JFrame {
 	}
 	
 	private void configComponente() {
-		ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizza();
+		ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizzas();
 		String lista = "";
 		
 		for(int i=0; i<listaDePizza.size(); i++) {
