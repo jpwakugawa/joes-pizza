@@ -37,21 +37,4 @@ public class Pizza{
   	  return String.format("sabor: %d | preço: %d |  status: %b", sabor, preco);
   	  
     }
-    
-    public void addPizza(Pizza novaPizza) {
-    	listaDePizza[nPizzas++] = novaPizza;
-    	
-    }
-    
-    
-    public String getListaDePizza() {
-    	  String lista = "";
-    	  
-    	  for(int i=0; i<nPizzas; i++) {
-    		  lista += listaDePizza[i].toString() + "\n";
-    	  }
-    	  
-    	  return lista;
-    }
-
-} 
+}

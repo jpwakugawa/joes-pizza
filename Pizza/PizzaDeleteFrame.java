@@ -62,16 +62,20 @@ public class PizzaDeleteFrame extends JFrame {
 			String command = e.getActionCommand();
 			
 			if( command.equals( "delete" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				ArrayList<Pizza>ListaDePizza = Gerenciador.getListaDePizza();
-				ListaDePizza.remove(id);
+				try {
+					int id = Integer.parseInt(idText.getText());
+					ArrayList<Pizza>listaDePizza = Gerenciador.getListaDePizza();
+					listaDePizza.remove(id);
 				
-				for(int i=0; i<ListaDePizza.size(); i++) {
-					Pizza novaPizza = ListaDePizza.get(i);
-					novaPizza.setId(i);
+					for(int i=0; i<listaDePizza.size(); i++) {
+						Pizza novaPizza = listaDePizza.get(i);
+						novaPizza.setId(i);
+					}
+					
+					status.setText("Pizza Deletada!");
+				} catch (Exception exception) {
+					status.setText(exception.getMessage());
 				}
-				
-				status.setText("Pizza Deletada!");
 					
 			}
 		}

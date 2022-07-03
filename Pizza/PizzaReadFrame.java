@@ -2,8 +2,12 @@ package Pizza;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import Pedido.Pedido;
+import Principal.Gerenciador;
 
 public class PizzaReadFrame extends JFrame {
 	JLabel status;
@@ -26,14 +30,19 @@ public class PizzaReadFrame extends JFrame {
 	}
 	
 	private void configComponente() {
-		Pizza Pizza = new Pizza();
-		String lista = Pizza.getListaDePizza();
+		ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizza();
+		String lista = "";
+		
+		for(int i=0; i<listaDePizza.size(); i++) {
+			Pizza PizzaAtual = listaDePizza.get(i);
+			lista += PizzaAtual.toString() + "\n";
+		}
 		
 		if (lista.equals("") ) {
 			area = new JTextArea("Nenhuma Pizza cadastrada...");
 		}
 		else {
-			area = new JTextArea(Pizza.getListaDePizza());
+			area = new JTextArea(lista);
 		}
 		
 		area.setBounds(50, 50, 900, 500);
