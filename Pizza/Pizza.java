@@ -58,7 +58,10 @@ public class Pizza{
     }
     
     public String toString() {
-  	  return String.format("Id: %d | sabor: %s | preÃ§o: %.2f", id, sabor, preco);
-  	  
+  	  return String.format("Id: %d | sabor: %s | preço: %.2f", id, sabor, preco);
     }
+    
+    public String toStringPedido() {
+    	  return String.format("Sabor: %s | preço: %.2f", sabor, preco);
+      }
 }
