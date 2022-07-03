@@ -58,7 +58,15 @@ public class PedidoDeleteFrame extends JFrame {
 	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
+			String command = e.getActionCommand(); 
+			int id = Integer.parseInt(idText.getText());
+			ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
+			listaDePedidos.remove(id);
+			
+			for(Pedido pedidos : listaDePedidos) {
+				Pedido novosPedidos = pedidos;
+				novosPedidos.setId(novosPedidos.getId());
+			}
 				status.setText("Pedido Deletado!");
 	    }
    }

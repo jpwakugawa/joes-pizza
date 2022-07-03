@@ -19,12 +19,23 @@ public class Pedido {
 	  setFormaDePagamento(formaDePagamento);
   }
   
+  Pedido(int id, Pizza pizza, Cliente cliente, FormaDePagamento formaDePagamento) {
+	  setId(id);
+	  setPizza(pizza);
+	  setCliente(cliente);
+	  setFormaDePagamento(formaDePagamento);
+  }
+  
   public int getId() {
   	return id;
   }
   
   public void setId() {
   	this.id = Gerenciador.getListaDePedidos().size();
+  }
+  
+  public void setId(int id) {
+	  this.id = id;
   }
   
   public Pizza getPizza() {
