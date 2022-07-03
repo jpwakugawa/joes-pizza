@@ -9,13 +9,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class PedidoCreateFrame extends JFrame{
-	JLabel idPizzaLabel, idClienteLabel, status;
-	JTextField idPizzaText, idClienteText;
+	JLabel FPLabel, clienteLabel, pizzaLabel, status;
 	JButton submitButton;
 	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
 	ArrayList<Pizza> listaDePizzas = Gerenciador.getListaDePizzas();
-	JComboBox<String> FPCBox, clientesCBox;
+	JComboBox<String> FPCBox, clientesCBox, pizzaCBox;
 	
 	public PedidoCreateFrame(JLabel status) {
 		this.status = status;
@@ -33,28 +32,30 @@ public class PedidoCreateFrame extends JFrame{
 	}
 	
 	private void configComponente() {
-		idPizzaLabel = new JLabel("Selecione a Forma de Pagamento: ");
-		idPizzaLabel.setBounds(10, 70, 300, 30);
+		FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
+		FPLabel.setBounds(10, 70, 300, 30);
 		FPCBox = new JComboBox<String>();
 		FPCBox.setBounds(150, 100, 200, 30);
-		//idPizzaText = new JTextField();
-		//idPizzaText.setBounds(150, 100, 200, 30);
 		
-		idClienteLabel = new JLabel("ID Cliente: ");
-		idClienteLabel.setBounds(30, 150, 200, 30);
+		clienteLabel = new JLabel("Selecione o Cliente: ");
+		clienteLabel.setBounds(10, 120, 200, 30);
 		clientesCBox = new JComboBox<String>();
 		clientesCBox.setBounds(150, 150, 200, 30);
-		//idClienteText = new JTextField();
-		//idClienteText.setBounds(150, 150, 200, 30);
+		
+		pizzaLabel = new JLabel("Selecione a Pizza: ");
+		pizzaLabel.setBounds(10, 170, 200, 30);
+		pizzaCBox = new JComboBox<>();
+		pizzaCBox.setBounds(150, 200, 200, 30);
+		
+		
 		
 		submitButton = new JButton("submit");
-		submitButton.setBounds(150, 250, 200, 30);
+		submitButton.setBounds(150, 300, 200, 30);
 		submitButton.addActionListener(new ButtonClickListener());
 		
 		addComboBox();
-		add(idPizzaLabel);add(idClienteLabel);
-		//add(idPizzaText);add(idClienteText);
-		add(submitButton);add(FPCBox);add(clientesCBox);
+		add(FPLabel);add(FPCBox);add(clienteLabel);add(clientesCBox);
+		add(pizzaLabel);add(pizzaCBox);add(submitButton);
 	}
 	
 	private void configEvento() {
@@ -72,13 +73,18 @@ public class PedidoCreateFrame extends JFrame{
 	private void addComboBox() {
 		//Adicionando itens do Cliente
 		for(Cliente cliente : listaDeClientes) {
-			clientesCBox.addItem(cliente.getNome() + " | " + cliente.getEndereco());
+			clientesCBox.addItem(cliente.toStringPedido());
+		}
+		
+		//Adicionando sabores da Pizza
+		for(Pizza pizza : listaDePizzas) {
+			pizzaCBox.addItem(pizza.toStringPedido());
 		}
 		
 		//Adicionando itens da Forma de Pagamento
 		for(FormaDePagamento fp : listaFormasDePagamento) {
 			if(fp.getAtivo() != "NÃO") {
-				FPCBox.addItem(fp.getId() + " | " + fp.getTipo() +" | " + fp.getMoeda());
+				FPCBox.addItem(fp.toStringPedido());
 			}
 			
 		}
@@ -87,15 +93,20 @@ public class PedidoCreateFrame extends JFrame{
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-			int fpSelecionada, clienteSelecionado;
+			int fpSelecionada, clienteSelecionado, pizzaSelecionada;
 			
 			if( command.equals( "submit" ) )  {
-				fpSelecionada = FPCBox.getSelectedIndex();
+				fpSelecionada      = FPCBox.getSelectedIndex();
 				clienteSelecionado = clientesCBox.getSelectedIndex();
-				FormaDePagamento FPPedido = listaFormasDePagamento.get(fpSelecionada);
-				Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
+				pizzaSelecionada   = pizzaCBox.getSelectedIndex();
 				
-				Pedido p = new Pedido(null, clientePedido, FPPedido);
+				Pizza            pizzaPedido   = listaDePizzas.get(pizzaSelecionada);
+				Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
+				FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
+				
+				Pedido novoPedido = new Pedido(pizzaPedido, clientePedido, FPPedido);
+				ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
+				listaDePedidos.add(novoPedido);
 				status.setText("Novo Pedido Criado!");
 	         }
 	   }

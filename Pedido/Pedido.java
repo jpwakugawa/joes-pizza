@@ -52,7 +52,7 @@ public class Pedido {
   }
   
   public String toString() {
-	  return String.format("Id: %d | Cliente: %s | Forma de Pagamento: %s", id, cliente.toString(), formaDePagamento.toStringPedido());
+	  return String.format("Id_Pedido: %d | Pizza > %s | Cliente > %s | Forma de Pagamento > %s", id, pizza.toStringPedido(), cliente.toStringPedido(), formaDePagamento.toStringPedido());
   }
   
 }
