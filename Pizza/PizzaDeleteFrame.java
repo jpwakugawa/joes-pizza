@@ -69,7 +69,7 @@ public class PizzaDeleteFrame extends JFrame {
 				
 					for(int i=0; i<listaDePizza.size(); i++) {
 						Pizza novaPizza = listaDePizza.get(i);
-						novaPizza.setId(i);
+						novaPizza.setId(novaPizza.getId());
 					}
 					
 					status.setText("Pizza Deletada!");

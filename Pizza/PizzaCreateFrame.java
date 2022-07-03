@@ -68,10 +68,10 @@ public class PizzaCreateFrame extends JFrame {
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-			
+			preco = Double.parseDouble(precoText.getText().replace(',', '.'));
 			if( command.equals( "armazenar" )) {
 				try {
-					novaPizza = new Pizza(SaborText.getText());
+					novaPizza = new Pizza(SaborText.getText(), preco);
 					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizzas();
 					listaDePizza.add(novaPizza);
 					status.setText("Nova pizza Cadastrada!");

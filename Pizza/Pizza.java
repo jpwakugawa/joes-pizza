@@ -15,9 +15,10 @@ public class Pizza{
     	setSabor(sabor);
     }
     
-    Pizza(int id, String sabor){
-    	setId();
+    Pizza(int id, String sabor, double preco){
+    	setId(id);
     	setSabor(sabor);
+    	setPreco(preco);
     }
     
     Pizza(String sabor, double preco){
@@ -34,6 +35,10 @@ public class Pizza{
 
 	public void setId() {
 		this.id = Gerenciador.getListaDePizzas().size();
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getSabor(){
@@ -53,7 +58,7 @@ public class Pizza{
     }
     
     public String toString() {
-  	  return String.format("Id: %d | sabor: %s | preço: %f", id, sabor, preco);
+  	  return String.format("Id: %d | sabor: %s | preço: %.2f", id, sabor, preco);
   	  
     }
 }

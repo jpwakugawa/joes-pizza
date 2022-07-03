@@ -76,8 +76,9 @@ public class PizzaUpdateFrame extends JFrame{
 				try {
 					int id = Integer.parseInt(idText.getText());
 					String Sabor = SaborText.getText();
+					Double Preco = Double.parseDouble(precoText.getText().replace(',', '.'));
 					
-					novaPizza = new Pizza(id, Sabor);
+					novaPizza = new Pizza(id, Sabor, Preco);
 					ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizzas();
 					ListaDePizza.set(id, novaPizza);
 					
