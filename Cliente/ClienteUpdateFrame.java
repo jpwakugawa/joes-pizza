@@ -78,16 +78,21 @@ public class ClienteUpdateFrame extends JFrame {
 			String command = e.getActionCommand();  
 
 			if( command.equals( "edit" ) )  {
-				int id = Integer.parseInt(idText.getText());
-				String nome = nomeText.getText();
-				String endereco = enderecoText.getText();
-				String cpf = cpfText.getText();
-				
-				Cliente cliente = new Cliente(id, nome, endereco, cpf);
-				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
-				listaDeClientes.set(id, cliente);
-				
-				status.setText("Cliente Editado!");
+				try {
+					int id = Integer.parseInt(idText.getText());
+					String nome = nomeText.getText();
+					String endereco = enderecoText.getText();
+					String cpf = cpfText.getText();
+					
+					Cliente cliente = new Cliente(id, nome, endereco, cpf);
+					ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+					listaDeClientes.set(id, cliente);
+					
+					status.setText("Cliente Editado!");
+				} catch (Exception exception) {
+					status.setText(exception.getMessage());
+				}
+
 	         }
 	   }	
    }
