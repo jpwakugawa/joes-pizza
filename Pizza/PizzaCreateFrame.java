@@ -7,9 +7,10 @@ import java.awt.event.WindowEvent;
 
 
 public class PizzaCreateFrame extends JFrame {
-	JTextField PizzaText;
+	JTextField SaborText, precoText;
+	JLabel SaborLabel, precoLabel, status;
 	String  tipoSabor;
-	JLabel SaborLabel, status;
+	double preco;
 	JButton armazenarButton;
 	Pizza novaPizza;
 	
@@ -31,15 +32,20 @@ public class PizzaCreateFrame extends JFrame {
 	private void configComponente() {
 		SaborLabel = new JLabel("sabor:");
 		SaborLabel.setBounds(30, 100, 200, 30);
+		SaborText = new JTextField();
+		SaborText.setBounds(110, 100, 200, 30);
 		
-		PizzaText = new JTextField();
-		PizzaText.setBounds(110, 100, 200, 30);
+		precoLabel = new JLabel("preco:");
+		precoLabel.setBounds(30, 150, 200, 30);
+		precoText = new JTextField();
+		precoText.setBounds(110, 150, 200,30);
 		
 		armazenarButton = new JButton("armazenar");
 		armazenarButton.setBounds(110, 250, 200, 30);
 		armazenarButton.addActionListener(new ButtonClickListener());
 		
-		add(SaborLabel); add(armazenarButton);
+		add(SaborLabel); add(precoLabel); 
+		add(SaborText); add(precoText); add(armazenarButton);
 		
 	}
 	
@@ -60,7 +66,7 @@ public class PizzaCreateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "armazenar" )) {
-				novaPizza = new Pizza(PizzaText.getText(), tipoSabor);
+				novaPizza = new Pizza(SaborText.getText());
 				status.setText("Nova pizza Cadastrada!");
 				System.out.println(novaPizza.getListaDePizza());
 				

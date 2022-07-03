@@ -4,7 +4,13 @@ import javax.swing.*;
 import java.awt.event.*;
 import Cliente.*;
 import Pedido.*;
+<<<<<<< Updated upstream
 import Pizza.*;
+=======
+import Pizza.PizzaCreateFrame;
+import Pizza.PizzaReadFrame;
+import Pizza.PizzaUpdateFrame;
+>>>>>>> Stashed changes
 import FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
@@ -14,6 +20,7 @@ public class Menu extends JMenuBar implements ActionListener {
 	JMenuItem createPedido, readPedido, updatePedido, deletePedido;
 	JMenuItem createPizza, readPizza, updatePizza, deletePizza;
 	JMenuItem cadastrarFP, visualizarFP, editarFP, deletarFP;
+	JMenuItem cadastrarPizza, visualizarPizza, editarPizza, deletarPizza;
 	
 	Menu(JLabel status){
 		this.status = status;
@@ -80,8 +87,23 @@ public class Menu extends JMenuBar implements ActionListener {
 		else if(e.getSource()==deletarFP) {
 			new FormaDePagamentoDeleteFrame(status);
 		}
+		
+		// janelas pizza
+		else if(e.getSource()==cadastrarPizza) {
+			new PizzaCreateFrame(status);
+		}
+		else if(e.getSource()==visualizarPizza) {
+			new PizzaReadFrame(status);
+		}
+		else if(e.getSource()==editarPizza) {
+			new PizzaUpdateFrame(status);
+		}
+		else if(e.getSource()==deletarPizza) {
+			new PizzaUpdateFrame(status);
+		}
 	}
-	
+			
+		
 	public void submenuCliente() {
 		submenuCliente = new JMenu("Cliente");
 		
@@ -135,17 +157,25 @@ public class Menu extends JMenuBar implements ActionListener {
 		readPizza = new JMenuItem("Visualizar");
 		readPizza.addActionListener(this);
 		
+<<<<<<< Updated upstream
 		updatePizza = new JMenuItem("Editar");
 		updatePizza.addActionListener(this);
 		
 		deletePizza = new JMenuItem("Deletar");
+=======
+		deletePizza = new JMenuItem("Editar");
+>>>>>>> Stashed changes
 		deletePizza.addActionListener(this);
 		
 		submenuPizza.add(createPizza);
 		submenuPizza.add(readPizza);
 		submenuPizza.add(updatePizza);
 		submenuPizza.add(deletePizza);
+<<<<<<< Updated upstream
 	
+=======
+		
+>>>>>>> Stashed changes
 		this.add(submenuPizza);
 	}
 	
