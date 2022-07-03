@@ -19,7 +19,7 @@ public class PedidoReadFrame extends JFrame{
 	
 	private void configJanela() {
 		setTitle("Lista de Pedidos");
-		setSize(1000, 800);
+		setSize(1100, 800);
 		setLayout(null);
 		status.setText("Listando Pedidos");
 	}
@@ -40,7 +40,7 @@ public class PedidoReadFrame extends JFrame{
 			area = new JTextArea(lista);
 		}
 		
-		area.setBounds(50, 50, 900, 500);
+		area.setBounds(50, 50, 1000, 500);
 		add(area);
 	}
 	
