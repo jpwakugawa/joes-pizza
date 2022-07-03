@@ -1,8 +1,10 @@
 package Principal;
+
 import javax.swing.*;
 import java.awt.event.*;
 import Cliente.*;
 import Pedido.*;
+import Pizza.*;
 import FormaDePagamento.*;
 
 public class Menu extends JMenuBar implements ActionListener {
@@ -10,6 +12,7 @@ public class Menu extends JMenuBar implements ActionListener {
 	JMenu     submenuCliente, submenuPedido, submenuPizza, submenuFP;
 	JMenuItem createCliente, readCliente, updateCliente, deleteCliente;
 	JMenuItem createPedido, readPedido, updatePedido, deletePedido;
+	JMenuItem createPizza, readPizza, updatePizza, deletePizza;
 	JMenuItem cadastrarFP, visualizarFP, editarFP, deletarFP;
 	
 	Menu(JLabel status){
@@ -48,6 +51,20 @@ public class Menu extends JMenuBar implements ActionListener {
 		}
 		else if(e.getSource()==deletePedido) {
 			new PedidoDeleteFrame(status);
+		}
+		
+		// Janelas Pizza
+		if(e.getSource()==createPizza) {
+			new PizzaCreateFrame(status);
+		}
+		else if(e.getSource()==readPizza) {
+			new PizzaReadFrame(status);
+		}
+		else if(e.getSource()==updatePizza) {
+			//new PizzaUpdateFrame(status);
+		}
+		else if(e.getSource()==deletePizza) {
+			//new PizzaDeleteFrame(status);
 		}
 		
 		// Janelas Forma de Pagamento
@@ -112,6 +129,23 @@ public class Menu extends JMenuBar implements ActionListener {
 	
 	public void submenuPizza() {
 		submenuPizza = new JMenu("Pizza");
+		createPizza = new JMenuItem("Cadastrar");
+		createPizza.addActionListener(this);
+		
+		readPizza = new JMenuItem("Visualizar");
+		readPizza.addActionListener(this);
+		
+		updatePizza = new JMenuItem("Editar");
+		updatePizza.addActionListener(this);
+		
+		deletePizza = new JMenuItem("Deletar");
+		deletePizza.addActionListener(this);
+		
+		submenuPizza.add(createPizza);
+		submenuPizza.add(readPizza);
+		submenuPizza.add(updatePizza);
+		submenuPizza.add(deletePizza);
+	
 		this.add(submenuPizza);
 	}
 	
