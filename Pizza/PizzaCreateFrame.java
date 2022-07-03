@@ -1,9 +1,13 @@
 package Pizza;
 import javax.swing.*;
+
+import Principal.Gerenciador;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 
 public class PizzaCreateFrame extends JFrame {
@@ -66,13 +70,17 @@ public class PizzaCreateFrame extends JFrame {
 			String command = e.getActionCommand();  
 			
 			if( command.equals( "armazenar" )) {
-				novaPizza = new Pizza(SaborText.getText());
-				status.setText("Nova pizza Cadastrada!");
-				System.out.println(novaPizza.getListaDePizza());
-				
+				try {
+					novaPizza = new Pizza(SaborText.getText());
+					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizza();
+					listaDePizza.add(novaPizza);
+					status.setText("Nova pizza Cadastrada!");
+				}catch(Exception exception) {
+					status.setText(exception.getMessage());
+				}
 			}
-
 		}
 	}
-
 }
+
+
