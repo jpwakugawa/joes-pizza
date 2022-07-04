@@ -8,22 +8,19 @@ public class Pedido {
   private int id;
   private Pizza pizza;
   private Cliente cliente;
-  private FormaDePagamento formaDePagamento;
   
   Pedido() {}
   
-  Pedido(Pizza pizza, Cliente cliente, FormaDePagamento formaDePagamento) {
+  Pedido(Pizza pizza, Cliente cliente) {
 	  setId();
 	  setPizza(pizza);
 	  setCliente(cliente);
-	  setFormaDePagamento(formaDePagamento);
   }
   
-  Pedido(int id, Pizza pizza, Cliente cliente, FormaDePagamento formaDePagamento) {
+  Pedido(int id, Pizza pizza, Cliente cliente) {
 	  setId(id);
 	  setPizza(pizza);
 	  setCliente(cliente);
-	  setFormaDePagamento(formaDePagamento);
   }
   
   public int getId() {
@@ -54,16 +51,8 @@ public class Pedido {
   	this.cliente = cliente;
   }
   
-  public FormaDePagamento getFormaDePagamento() {
-  	return formaDePagamento;
-  }
-  
-  public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
-  	this.formaDePagamento = formaDePagamento;
-  }
-  
   public String toString() {
-	  return String.format("Id_Pedido: %d | Pizza > %s | Cliente > %s | Forma de Pagamento > %s", id, pizza.toStringPedido(), cliente.toStringPedido(), formaDePagamento.toStringPedido());
+	  return String.format("Id_Pedido: %d | Pizza > %s | Cliente > %s", id, pizza.toStringPedido(), cliente.toStringPedido());
   }
   
 }

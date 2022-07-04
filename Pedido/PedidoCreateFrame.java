@@ -9,12 +9,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class PedidoCreateFrame extends JFrame{
-	JLabel FPLabel, clienteLabel, pizzaLabel, status;
+	JLabel clienteLabel, pizzaLabel, status;
 	JButton submitButton;
-	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
 	ArrayList<Pizza> listaDePizzas = Gerenciador.getListaDePizzas();
-	JComboBox<String> FPCBox, clientesCBox, pizzaCBox;
+	JComboBox<String> clientesCBox, pizzaCBox;
 	
 	public PedidoCreateFrame(JLabel status) {
 		this.status = status;
@@ -32,11 +31,6 @@ public class PedidoCreateFrame extends JFrame{
 	}
 	
 	private void configComponente() {
-		FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
-		FPLabel.setBounds(10, 70, 300, 30);
-		FPCBox = new JComboBox<String>();
-		FPCBox.setBounds(150, 100, 200, 30);
-		
 		clienteLabel = new JLabel("Selecione o Cliente: ");
 		clienteLabel.setBounds(10, 120, 200, 30);
 		clientesCBox = new JComboBox<String>();
@@ -54,7 +48,7 @@ public class PedidoCreateFrame extends JFrame{
 		submitButton.addActionListener(new ButtonClickListener());
 		
 		addComboBox();
-		add(FPLabel);add(FPCBox);add(clienteLabel);add(clientesCBox);
+		add(clienteLabel);add(clientesCBox);
 		add(pizzaLabel);add(pizzaCBox);add(submitButton);
 	}
 	
@@ -80,31 +74,22 @@ public class PedidoCreateFrame extends JFrame{
 		for(Pizza pizza : listaDePizzas) {
 			pizzaCBox.addItem(pizza.toStringPedido());
 		}
-		
-		//Adicionando itens da Forma de Pagamento
-		for(FormaDePagamento fp : listaFormasDePagamento) {
-			if(fp.getAtivo() != "NÃO") {
-				FPCBox.addItem(fp.toStringPedido());
-			}
-			
-		}
+
 	}
 	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-			int fpSelecionada, clienteSelecionado, pizzaSelecionada;
+			int clienteSelecionado, pizzaSelecionada;
 			
 			if( command.equals( "submit" ) )  {
-				fpSelecionada      = FPCBox.getSelectedIndex();
 				clienteSelecionado = clientesCBox.getSelectedIndex();
 				pizzaSelecionada   = pizzaCBox.getSelectedIndex();
 				
 				Pizza            pizzaPedido   = listaDePizzas.get(pizzaSelecionada);
 				Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
-				FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
 				
-				Pedido novoPedido = new Pedido(pizzaPedido, clientePedido, FPPedido);
+				Pedido novoPedido = new Pedido(pizzaPedido, clientePedido);
 				ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
 				listaDePedidos.add(novoPedido);
 				status.setText("Novo Pedido Criado!");

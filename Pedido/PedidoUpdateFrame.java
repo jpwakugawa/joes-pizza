@@ -9,11 +9,10 @@ import Pizza.Pizza;
 import Principal.Gerenciador;
 
 public class PedidoUpdateFrame extends JFrame {
-		JLabel     idLabel, avisoLabel, FPLabel, clienteLabel, pizzaLabel, status;
+		JLabel     idLabel, avisoLabel, clienteLabel, pizzaLabel, status;
 		JTextField idText;
-		JComboBox<String> FPCBox, clientesCBox, pizzaCBox;
+		JComboBox<String> clientesCBox, pizzaCBox;
 		JButton    submitButton;
-		ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 		ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
 		ArrayList<Pizza> listaDePizzas = Gerenciador.getListaDePizzas();
 		
@@ -41,11 +40,6 @@ public class PedidoUpdateFrame extends JFrame {
 			idText = new JTextField();
 			idText.setBounds(110, 50, 200, 30);
 			
-			FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
-			FPLabel.setBounds(10, 70, 300, 30);
-			FPCBox = new JComboBox<String>();
-			FPCBox.setBounds(150, 100, 200, 30);
-			
 			clienteLabel = new JLabel("Selecione o Cliente: ");
 			clienteLabel.setBounds(10, 120, 200, 30);
 			clientesCBox = new JComboBox<String>();
@@ -60,11 +54,9 @@ public class PedidoUpdateFrame extends JFrame {
 			submitButton.setBounds(110, 300, 200, 30);
 			submitButton.addActionListener(new ButtonClickListener());
 			
-			addComboBox();
-			
 			add(avisoLabel);add(idLabel);
 			add(idText);add(submitButton);
-			add(FPLabel);add(FPCBox);add(clienteLabel);add(clientesCBox);
+			add(clienteLabel);add(clientesCBox);
 			add(pizzaLabel);add(pizzaCBox);add(submitButton);
 			
 			
@@ -92,32 +84,23 @@ public class PedidoUpdateFrame extends JFrame {
 			for(Pizza pizza : listaDePizzas) {
 				pizzaCBox.addItem(pizza.toStringPedido());
 			}
-			
-			//Adicionando itens da Forma de Pagamento
-			for(FormaDePagamento fp : listaFormasDePagamento) {
-				if(fp.getAtivo() != "NÃO") {
-					FPCBox.addItem(fp.toStringPedido());
-				}
-				
-			}
+
 		}
 		
 		private class ButtonClickListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				String command = e.getActionCommand();  
 				int id         = Integer.parseInt(idText.getText());
-				int fpSelecionada, clienteSelecionado, pizzaSelecionada;
+				int clienteSelecionado, pizzaSelecionada;
 				
 				if( command.equals( "edit" ) )  {
-					fpSelecionada      = FPCBox.getSelectedIndex();
 					clienteSelecionado = clientesCBox.getSelectedIndex();
 					pizzaSelecionada   = pizzaCBox.getSelectedIndex();
 					
 					Pizza            pizzaPedido   = listaDePizzas.get(pizzaSelecionada);
 					Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
-					FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
 					
-					Pedido novoPedido = new Pedido(id, pizzaPedido, clientePedido, FPPedido);
+					Pedido novoPedido = new Pedido(id, pizzaPedido, clientePedido);
 					ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
 					listaDePedidos.set(id, novoPedido);
 					
