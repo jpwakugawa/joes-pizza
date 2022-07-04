@@ -43,7 +43,7 @@ public class PizzaUpdateFrame extends JFrame{
 		SaborText = new JTextField();
 		SaborText.setBounds(110, 100, 200, 30);
 		
-		precoLabel = new JLabel("preco: ");
+		precoLabel = new JLabel("Preço: ");
 		precoLabel.setBounds(30, 150, 200, 30);
 		precoText = new JTextField();
 		precoText.setBounds(110, 150, 200, 30);

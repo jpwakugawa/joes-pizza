@@ -27,24 +27,24 @@ public class PizzaCreateFrame extends JFrame {
 	}
 	
 	private void configJanela() {
-		setTitle("cadastro da pizza");
+		setTitle("Cadastro de Pizza");
 		setSize(500,500);
 		setLayout(null);
-		status.setText("cadastrando nova Pizza");
+		status.setText("Cadastrando nova pizza");
 	}
 	
 	private void configComponente() {
-		SaborLabel = new JLabel("sabor:");
+		SaborLabel = new JLabel("Sabor:");
 		SaborLabel.setBounds(30, 100, 200, 30);
 		SaborText = new JTextField();
 		SaborText.setBounds(110, 100, 200, 30);
 		
-		precoLabel = new JLabel("preco:");
+		precoLabel = new JLabel("Preço:");
 		precoLabel.setBounds(30, 150, 200, 30);
 		precoText = new JTextField();
 		precoText.setBounds(110, 150, 200,30);
 		
-		armazenarButton = new JButton("armazenar");
+		armazenarButton = new JButton("Armazenar");
 		armazenarButton.setBounds(110, 250, 200, 30);
 		armazenarButton.addActionListener(new ButtonClickListener());
 		
@@ -69,12 +69,12 @@ public class PizzaCreateFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
 			preco = Double.parseDouble(precoText.getText().replace(',', '.'));
-			if( command.equals( "armazenar" )) {
+			if( command.equals( "Armazenar" )) {
 				try {
 					novaPizza = new Pizza(SaborText.getText(), preco);
 					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizzas();
 					listaDePizza.add(novaPizza);
-					status.setText("Nova pizza Cadastrada!");
+					status.setText("Nova Pizza Cadastrada!");
 				}catch(Exception exception) {
 					status.setText(exception.getMessage());
 				}
