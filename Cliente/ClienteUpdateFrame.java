@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ClienteUpdateFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, FPLabel, status;
 	JTextField idText, nomeText, cpfText, enderecoText;
-	JButton    submitButton, buscar;
+	JButton    submitButton, buscarButton;
 	JComboBox<String> FPCBox;
 	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	
@@ -62,8 +62,9 @@ public class ClienteUpdateFrame extends JFrame {
 		FPCBox = new JComboBox<String>();
 		FPCBox.setBounds(110, 300, 300, 30);
 		
-		buscar = new JButton();
-		buscar.setBounds(320, 50, 30, 30);
+		buscarButton = new JButton(new ImageIcon("./Imagens/icon_search.png"));
+		buscarButton.setBounds(320, 50, 30, 30);
+		buscarButton.addActionListener(new ButtonClickListener());
 		
 		submitButton = new JButton("edit");
 		submitButton.setBounds(110, 350, 200, 30);
@@ -72,7 +73,7 @@ public class ClienteUpdateFrame extends JFrame {
 		addComboBox();
 		add(avisoLabel);add(idLabel);add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(idText);add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
-		add(FPLabel);add(FPCBox);add(buscar);
+		add(FPLabel);add(FPCBox);add(buscarButton);
 		
 	}
 	
@@ -100,11 +101,12 @@ public class ClienteUpdateFrame extends JFrame {
 	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();  
+			String command = e.getActionCommand();
+			int id = Integer.parseInt(idText.getText());
 			int fpSelecionada;
 			if( command.equals( "edit" ) )  {
 				try {
-					int id = Integer.parseInt(idText.getText());
+					
 					fpSelecionada      = FPCBox.getSelectedIndex();
 					String nome = nomeText.getText();
 					String endereco = enderecoText.getText();
@@ -121,6 +123,12 @@ public class ClienteUpdateFrame extends JFrame {
 				}
 
 	         }
-	   }	
+			if( command.equals("")) {
+				ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+				nomeText.setText(listaDeClientes.get(id).getNome());
+				cpfText.setText(listaDeClientes.get(id).getCpf());
+				enderecoText.setText(listaDeClientes.get(id).getEndereco());
+			}
+	    }	
    }
 }
