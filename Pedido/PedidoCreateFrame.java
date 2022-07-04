@@ -86,13 +86,18 @@ public class PedidoCreateFrame extends JFrame{
 				clienteSelecionado = clientesCBox.getSelectedIndex();
 				pizzaSelecionada   = pizzaCBox.getSelectedIndex();
 				
-				Pizza            pizzaPedido   = listaDePizzas.get(pizzaSelecionada);
-				Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
-				
-				Pedido novoPedido = new Pedido(pizzaPedido, clientePedido);
-				ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
-				listaDePedidos.add(novoPedido);
-				status.setText("Novo Pedido Criado!");
+				if(clienteSelecionado == -1 || pizzaSelecionada == -1) {
+					status.setText("Primeiro cadastre o cliente e a pizza!");
+				}
+				else {
+					Pizza            pizzaPedido   = listaDePizzas.get(pizzaSelecionada);
+					Cliente          clientePedido = listaDeClientes.get(clienteSelecionado);
+					
+					Pedido novoPedido = new Pedido(pizzaPedido, clientePedido);
+					ArrayList<Pedido> listaDePedidos = Gerenciador.getListaDePedidos();
+					listaDePedidos.add(novoPedido);
+					status.setText("Novo Pedido Criado!");	
+				}
 	         }
 	   }
    }
