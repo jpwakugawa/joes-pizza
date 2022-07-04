@@ -1,15 +1,21 @@
 package Cliente;
 
 import javax.swing.*;
+
+import FormaDePagamento.FormaDePagamento;
+import Pizza.Pizza;
+
 import java.awt.event.*;
 import Principal.Gerenciador;
 import java.util.ArrayList;
 
 // Janela para realizar cadastro de cliente
 public class ClienteCreateFrame extends JFrame {
-	JLabel nomeLabel, cpfLabel, enderecoLabel, status;
+	JLabel nomeLabel, cpfLabel, enderecoLabel, FPLabel, status;
 	JTextField nomeText, cpfText, enderecoText;
 	JButton submitButton;
+	JComboBox<String> FPCBox;
+	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 
 	public ClienteCreateFrame(JLabel status) {
 		this.status = status;
@@ -42,11 +48,17 @@ public class ClienteCreateFrame extends JFrame {
 		enderecoText = new JTextField();
 		enderecoText.setBounds(110, 200, 200, 30);
 		
+		FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
+		FPLabel.setBounds(10, 250, 300, 30);
+		FPCBox = new JComboBox<String>();
+		FPCBox.setBounds(110, 280, 300, 30);
+		
 		submitButton = new JButton("submit");
-		submitButton.setBounds(110, 250, 200, 30);
+		submitButton.setBounds(110, 350, 200, 30);
 		submitButton.addActionListener(new ButtonClickListener());
 		
-		add(nomeLabel);add(cpfLabel);add(enderecoLabel);
+		addComboBox();
+		add(nomeLabel);add(cpfLabel);add(enderecoLabel);add(FPLabel);add(FPCBox);
 		add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
 	}
 	
@@ -62,13 +74,24 @@ public class ClienteCreateFrame extends JFrame {
 		setVisible(true);
 	}
 	
+	private void addComboBox() {
+		//Adicionando itens da Forma de Pagamento
+		for(FormaDePagamento fp : listaFormasDePagamento) {
+			if(fp.getAtivo() != "NÃO") {
+				FPCBox.addItem(fp.toStringPedido());
+			}
+			
+		}
+	}
+	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-
+			int fpSelecionada = FPCBox.getSelectedIndex();
 			if( command.equals( "submit" ) )  {
 				try {
-					Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText());
+					FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
+					Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText(), FPPedido);
 					ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
 					listaDePedidos.add(novoCliente);
 					status.setText("Novo Cliente Criado!");	

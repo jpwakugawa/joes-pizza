@@ -1,6 +1,10 @@
 package Cliente;
 
 import javax.swing.*;
+
+import FormaDePagamento.FormaDePagamento;
+import Pizza.Pizza;
+
 import java.awt.event.*;
 import Principal.Gerenciador;
 import java.util.ArrayList;
@@ -8,9 +12,11 @@ import java.util.ArrayList;
 
 // Janela para editar clientes
 public class ClienteUpdateFrame extends JFrame {
-	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, status;
+	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, FPLabel, status;
 	JTextField idText, nomeText, cpfText, enderecoText;
 	JButton    submitButton;
+	JComboBox<String> FPCBox;
+	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	
 	public ClienteUpdateFrame(JLabel status) {
 		this.status = status;
@@ -51,13 +57,19 @@ public class ClienteUpdateFrame extends JFrame {
 		enderecoText = new JTextField();
 		enderecoText.setBounds(110, 200, 200, 30);
 		
+		FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
+		FPLabel.setBounds(10, 250, 300, 30);
+		FPCBox = new JComboBox<String>();
+		FPCBox.setBounds(150, 300, 300, 30);
+		
 		submitButton = new JButton("edit");
-		submitButton.setBounds(110, 250, 200, 30);
+		submitButton.setBounds(110, 350, 200, 30);
 		submitButton.addActionListener(new ButtonClickListener());
 		
+		addComboBox();
 		add(avisoLabel);add(idLabel);add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(idText);add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
-		
+		add(FPLabel);add(FPCBox);
 		
 	}
 	
@@ -73,18 +85,30 @@ public class ClienteUpdateFrame extends JFrame {
 		setVisible(true);
 	}
 	
+	private void addComboBox() {
+		//Adicionando itens da Forma de Pagamento
+		for(FormaDePagamento fp : listaFormasDePagamento) {
+			if(fp.getAtivo() != "NÃO") {
+				FPCBox.addItem(fp.toStringPedido());
+			}
+			
+		}
+	}
+	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-
+			int fpSelecionada;
 			if( command.equals( "edit" ) )  {
 				try {
 					int id = Integer.parseInt(idText.getText());
+					fpSelecionada      = FPCBox.getSelectedIndex();
 					String nome = nomeText.getText();
 					String endereco = enderecoText.getText();
 					String cpf = cpfText.getText();
 					
-					Cliente cliente = new Cliente(id, nome, endereco, cpf);
+					FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
+					Cliente cliente = new Cliente(id, nome, endereco, cpf, FPPedido);
 					ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
 					listaDeClientes.set(id, cliente);
 					
