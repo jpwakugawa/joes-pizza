@@ -2,7 +2,6 @@ package Pizza;
 
 import java.awt.event.*;
 import java.util.ArrayList;
-
 import javax.swing.*;
 import Principal.Gerenciador;
 
@@ -11,7 +10,7 @@ public class PizzaUpdateFrame extends JFrame{
 	JTextField idText, SaborText, precoText;
 	String  tipoSabor;
 	double preco;
-	JButton armazenarButton;
+	JButton armazenarButton, buscarButton;
 	Pizza novaPizza;
 	
 	public PizzaUpdateFrame(JLabel status) {
@@ -48,12 +47,16 @@ public class PizzaUpdateFrame extends JFrame{
 		precoText = new JTextField();
 		precoText.setBounds(110, 150, 200, 30);
 		
+		buscarButton = new JButton(new ImageIcon("./Imagens/icon_search.png"));
+		buscarButton.setBounds(320, 50, 30, 30);
+		buscarButton.addActionListener(new ButtonClickListener());
+		
 		armazenarButton = new JButton("Edit");
 		armazenarButton.setBounds(110, 250, 200, 30);
 		armazenarButton.addActionListener(new ButtonClickListener());
 		
 		add(avisoLabel); add(idLabel); add(SaborLabel); add(precoLabel);
-		add(idText); add(SaborText); add(precoText); add(armazenarButton);
+		add(idText); add(SaborText); add(precoText); add(armazenarButton);add(buscarButton);
 	}
 	
 	private void configEvento() {
@@ -71,10 +74,9 @@ public class PizzaUpdateFrame extends JFrame{
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();  
-			
+			int id = Integer.parseInt(idText.getText());
 			if( command.equals( "Edit" ) )  {
 				try {
-					int id = Integer.parseInt(idText.getText());
 					String Sabor = SaborText.getText();
 					Double Preco = Double.parseDouble(precoText.getText().replace(',', '.'));
 					
@@ -82,11 +84,17 @@ public class PizzaUpdateFrame extends JFrame{
 					ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizzas();
 					ListaDePizza.set(id, novaPizza);
 					
+					SaborText.setText("");precoText.setText("");idText.setText("");
 					status.setText("Pizza Editada!");
 				}catch (Exception exception) {
 					status.setText(exception.getMessage());
-				}
-					
+				}		
+			}
+			
+			if( command.equals("")) {
+				ArrayList<Pizza> ListaDePizza = Gerenciador.getListaDePizzas();
+				SaborText.setText(ListaDePizza.get(id).getSabor());
+				precoText.setText(ListaDePizza.get(id).getPreco()+"");
 			}
 		}
 	}

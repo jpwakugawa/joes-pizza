@@ -38,7 +38,7 @@ public class PedidoUpdateFrame extends JFrame {
 			idLabel = new JLabel("Id: ");
 			idLabel.setBounds(30, 50, 200, 30);
 			idText = new JTextField();
-			idText.setBounds(110, 50, 200, 30);
+			idText.setBounds(150, 50, 200, 30);
 			
 			clienteLabel = new JLabel("Selecione o Cliente: ");
 			clienteLabel.setBounds(10, 120, 200, 30);
@@ -56,8 +56,8 @@ public class PedidoUpdateFrame extends JFrame {
 			
 			add(avisoLabel);add(idLabel);
 			add(idText);add(submitButton);
-			add(clienteLabel);add(clientesCBox);
 			add(pizzaLabel);add(pizzaCBox);add(submitButton);
+			add(clienteLabel);add(clientesCBox);
 			
 			
 		}
@@ -106,6 +106,7 @@ public class PedidoUpdateFrame extends JFrame {
 					
 					status.setText("Pedido Editado!");
 		         }
+			
 		   }	
 	   }
 	}

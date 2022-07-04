@@ -94,6 +94,8 @@ public class ClienteCreateFrame extends JFrame {
 					Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText(), FPPedido);
 					ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
 					listaDePedidos.add(novoCliente);
+					
+					nomeText.setText(""); cpfText.setText(""); enderecoText.setText("");
 					status.setText("Novo Cliente Criado!");	
 				} catch (Exception exception) {
 					status.setText(exception.getMessage());

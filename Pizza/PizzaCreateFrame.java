@@ -74,6 +74,8 @@ public class PizzaCreateFrame extends JFrame {
 					novaPizza = new Pizza(SaborText.getText(), preco);
 					ArrayList<Pizza> listaDePizza = Gerenciador.getListaDePizzas();
 					listaDePizza.add(novaPizza);
+					
+					SaborText.setText("");precoText.setText("");
 					status.setText("Nova pizza Cadastrada!");
 				}catch(Exception exception) {
 					status.setText(exception.getMessage());

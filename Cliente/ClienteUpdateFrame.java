@@ -117,6 +117,7 @@ public class ClienteUpdateFrame extends JFrame {
 					ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
 					listaDeClientes.set(id, cliente);
 					
+					nomeText.setText(""); cpfText.setText(""); enderecoText.setText("");idText.setText("");
 					status.setText("Cliente Editado!");
 				} catch (Exception exception) {
 					status.setText(exception.getMessage());
