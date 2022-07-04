@@ -77,7 +77,7 @@ public class ClienteCreateFrame extends JFrame {
 	private void addComboBox() {
 		//Adicionando itens da Forma de Pagamento
 		for(FormaDePagamento fp : listaFormasDePagamento) {
-			if(fp.getAtivo() != "NÃO") {
+			if(fp.getAtivo() != "Nï¿½O") {
 				FPCBox.addItem(fp.toStringPedido());
 			}
 			
@@ -90,11 +90,17 @@ public class ClienteCreateFrame extends JFrame {
 			int fpSelecionada = FPCBox.getSelectedIndex();
 			if( command.equals( "submit" ) )  {
 				try {
-					FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
-					Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText(), FPPedido);
-					ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
-					listaDePedidos.add(novoCliente);
-					status.setText("Novo Cliente Criado!");	
+					if(fpSelecionada == -1) {
+						status.setText("Crie uma forma de pagamento antes!");
+					}
+					else {
+						FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
+						Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText(), FPPedido);
+						ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
+						listaDePedidos.add(novoCliente);
+						status.setText("Novo Cliente Criado!");	
+					}
+
 				} catch (Exception exception) {
 					status.setText(exception.getMessage());
 				}
