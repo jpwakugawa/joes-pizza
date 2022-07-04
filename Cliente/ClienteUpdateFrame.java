@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ClienteUpdateFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, nomeLabel, cpfLabel, enderecoLabel, FPLabel, status;
 	JTextField idText, nomeText, cpfText, enderecoText;
-	JButton    submitButton;
+	JButton    submitButton, buscar;
 	JComboBox<String> FPCBox;
 	ArrayList<FormaDePagamento> listaFormasDePagamento = Gerenciador.getListaDeFormasDePagamentos();
 	
@@ -60,7 +60,10 @@ public class ClienteUpdateFrame extends JFrame {
 		FPLabel = new JLabel("Selecione a Forma de Pagamento: ");
 		FPLabel.setBounds(10, 250, 300, 30);
 		FPCBox = new JComboBox<String>();
-		FPCBox.setBounds(150, 300, 300, 30);
+		FPCBox.setBounds(110, 300, 300, 30);
+		
+		buscar = new JButton();
+		buscar.setBounds(320, 50, 30, 30);
 		
 		submitButton = new JButton("edit");
 		submitButton.setBounds(110, 350, 200, 30);
@@ -69,7 +72,7 @@ public class ClienteUpdateFrame extends JFrame {
 		addComboBox();
 		add(avisoLabel);add(idLabel);add(nomeLabel);add(cpfLabel);add(enderecoLabel);
 		add(idText);add(nomeText);add(cpfText);add(enderecoText);add(submitButton);
-		add(FPLabel);add(FPCBox);
+		add(FPLabel);add(FPCBox);add(buscar);
 		
 	}
 	
