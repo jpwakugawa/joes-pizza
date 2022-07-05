@@ -1,4 +1,4 @@
-package FormaDePagamento;
+package Entidades;
 
 import Principal.Gerenciador;
 
@@ -61,10 +61,10 @@ public class FormaDePagamento{
   }
   
   public String toString() {
-	  return String.format("Id: %d | Descrição: %s | Moeda: %s | Ativo: %s", id, tipo, moeda, ativo);
+	  return String.format("Id: %d | DescriÃ§Ã£o: %s | Moeda: %s | Ativo: %s", id, tipo, moeda, ativo);
   }
   
   public String toStringPedido() {
-	  return String.format("Descrição: %s | Moeda: %s", tipo, moeda);
+	  return String.format("DescriÃ§Ã£o: %s | Moeda: %s", tipo, moeda);
   }
 }

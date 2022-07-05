@@ -1,7 +1,5 @@
-package Pedido;
-import Cliente.*;
-import FormaDePagamento.*;
-import Pizza.*;
+package Entidades;
+
 import Principal.Gerenciador;
 
 public class Pedido {

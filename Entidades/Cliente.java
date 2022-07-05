@@ -1,6 +1,5 @@
-package Cliente;
+package Entidades;
 
-import FormaDePagamento.FormaDePagamento;
 import Principal.Gerenciador;
 
 public class Cliente {
@@ -77,7 +76,7 @@ public class Cliente {
   }
   
   public String toStringPedido() {
-	  return String.format("Nome: %s | Endereço: %s | Forma de Pagamento: %s ", nome, endereco, novaFP.getTipo());
+	  return String.format("Nome: %s | EndereÃ§o: %s | Forma de Pagamento: %s ", nome, endereco, novaFP.getTipo());
   }
   
 }

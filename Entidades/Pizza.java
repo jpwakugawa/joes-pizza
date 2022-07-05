@@ -1,4 +1,4 @@
-package Pizza;
+package Entidades;
 
 import Principal.Gerenciador;
 
@@ -6,7 +6,6 @@ public class Pizza{
 	private int id;
 	private String sabor;
     private double preco;
-    static Pizza[] listaDePizza= new Pizza[10];
     
     Pizza() {}
     
