@@ -1,9 +1,10 @@
-package Pedido;
+package Telas.Pedido;
 
 import javax.swing.*;
 import java.awt.event.*;
-import Principal.Gerenciador;
 import java.util.ArrayList;
+import Principal.Gerenciador;
+import Entidades.*;
 
 // Janela para realizar deleção de pedido
 public class PedidoDeleteFrame extends JFrame {

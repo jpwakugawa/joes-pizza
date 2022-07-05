@@ -1,14 +1,10 @@
-package Cliente;
+package Telas.Cliente;
 
 import javax.swing.*;
-
-import FormaDePagamento.FormaDePagamento;
-import Pizza.Pizza;
-
 import java.awt.event.*;
-import Principal.Gerenciador;
 import java.util.ArrayList;
-
+import Principal.Gerenciador;
+import Entidades.*;
 
 // Janela para editar clientes
 public class ClienteUpdateFrame extends JFrame {
@@ -92,7 +88,7 @@ public class ClienteUpdateFrame extends JFrame {
 	private void addComboBox() {
 		//Adicionando itens da Forma de Pagamento
 		for(FormaDePagamento fp : listaFormasDePagamento) {
-			if(fp.getAtivo() != "NÃO") {
+			if(fp.getAtivo() != "Nï¿½O") {
 				FPCBox.addItem(fp.toStringPedido());
 			}
 			

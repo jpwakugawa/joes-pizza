@@ -1,13 +1,10 @@
-package Pizza;
-
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
+package Telas.Pizza;
 
 import javax.swing.*;
-
-import Pedido.Pedido;
+import java.awt.event.*;
+import java.util.ArrayList;
 import Principal.Gerenciador;
+import Entidades.*;
 
 public class PizzaReadFrame extends JFrame {
 	JLabel status;

@@ -7,26 +7,24 @@ public class Pizza{
 	private String sabor;
     private double preco;
     
-    Pizza() {}
+    public Pizza() {}
     
-    Pizza(String sabor){
+    public Pizza(String sabor){
     	setId();
     	setSabor(sabor);
     }
     
-    Pizza(int id, String sabor, double preco){
+    public Pizza(int id, String sabor, double preco){
     	setId(id);
     	setSabor(sabor);
     	setPreco(preco);
     }
     
-    Pizza(String sabor, double preco){
+    public Pizza(String sabor, double preco){
     	setId();
     	setSabor(sabor);
     	setPreco(preco);
     }
-    
-    
     
     public int getId() {
 		return id;
@@ -57,10 +55,10 @@ public class Pizza{
     }
     
     public String toString() {
-  	  return String.format("Id: %d | Sabor: %s | Preço: %.2f", id, sabor, preco);
+    	return String.format("Id: %d | Sabor: %s | Preço: %.2f", id, sabor, preco);
     }
     
     public String toStringPedido() {
-    	  return String.format("Sabor: %s | Preço: %.2f", sabor, preco);
-      }
+    	return String.format("Sabor: %s | Preço: %.2f", sabor, preco);
+    }
 }

@@ -1,9 +1,10 @@
-package FormaDePagamento;
+package Telas.FormasDePagamento;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import Principal.Gerenciador;
+import Entidades.*;
 
 public class FormaDePagamentoCreateFrame extends JFrame {
 	JTextField       tipoText;
@@ -30,7 +31,7 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 	}
 	
 	private void configComponente() {
-		tipoLabel     = new JLabel("Descrição:");
+		tipoLabel     = new JLabel("Descriï¿½ï¿½o:");
 		tipoLabel.setBounds(30, 100, 200, 30);
 		tipoText      = new JTextField();
 		tipoText.setBounds(110, 100, 200, 30);
@@ -51,7 +52,7 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 		moedas.add(dolarRadioB);
 		moedas.add(guaraniRadioB);
 		
-		ativoCheckB   = new JCheckBox("Está ativa? ");
+		ativoCheckB   = new JCheckBox("Estï¿½ ativa? ");
 		ativoCheckB.setBounds(110, 200, 200, 30);
 		ativoCheckB.setSelected(true);
 		
@@ -84,7 +85,7 @@ public class FormaDePagamentoCreateFrame extends JFrame {
 		if(ativoCheckB.isSelected()) {
 			ativoTF = "SIM";
 		} else {
-			ativoTF = "NÃO";
+			ativoTF = "Nï¿½O";
 		}
 	}
 	

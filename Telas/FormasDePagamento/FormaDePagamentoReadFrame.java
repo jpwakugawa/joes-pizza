@@ -1,10 +1,10 @@
-package FormaDePagamento;
+package Telas.FormasDePagamento;
 
 import javax.swing.*;
-import Principal.Gerenciador;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
+import Principal.Gerenciador;
+import Entidades.*;
 
 public class FormaDePagamentoReadFrame extends JFrame{
 	JLabel    status;

@@ -8,16 +8,16 @@ public class FormaDePagamento{
   private String moeda;
   private String ativo;
   
-  FormaDePagamento() {}
+  public FormaDePagamento() {}
   
-  FormaDePagamento(String tipo, String moeda, String ativo){
+  public FormaDePagamento(String tipo, String moeda, String ativo){
 	  setId();
 	  setTipo(tipo);
 	  setMoeda(moeda);
 	  setAtivo(ativo);
   }
   
-  FormaDePagamento(int id, String tipo, String moeda, String ativo){
+  public FormaDePagamento(int id, String tipo, String moeda, String ativo){
 	  setId(id);
 	  setTipo(tipo);
 	  setMoeda(moeda);

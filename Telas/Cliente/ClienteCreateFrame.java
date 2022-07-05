@@ -1,13 +1,10 @@
-package Cliente;
+package Telas.Cliente;
 
 import javax.swing.*;
-
-import FormaDePagamento.FormaDePagamento;
-import Pizza.Pizza;
-
 import java.awt.event.*;
-import Principal.Gerenciador;
 import java.util.ArrayList;
+import Principal.Gerenciador;
+import Entidades.*;
 
 // Janela para realizar cadastro de cliente
 public class ClienteCreateFrame extends JFrame {
@@ -77,7 +74,7 @@ public class ClienteCreateFrame extends JFrame {
 	private void addComboBox() {
 		//Adicionando itens da Forma de Pagamento
 		for(FormaDePagamento fp : listaFormasDePagamento) {
-			if(fp.getAtivo() != "N�O") {
+			if(fp.getAtivo() != "NÃO") {
 				FPCBox.addItem(fp.toStringPedido());
 			}
 			
@@ -94,7 +91,7 @@ public class ClienteCreateFrame extends JFrame {
 						status.setText("Cadastre uma forma de pagamento antes!");
 					}
 					else {
-						FormaDePagamento FPPedido      = listaFormasDePagamento.get(fpSelecionada);
+						FormaDePagamento FPPedido = listaFormasDePagamento.get(fpSelecionada);
 						Cliente novoCliente = new Cliente(nomeText.getText(), enderecoText.getText(), cpfText.getText(), FPPedido);
 						ArrayList<Cliente> listaDePedidos = Gerenciador.getListaDeClientes();
 						listaDePedidos.add(novoCliente);

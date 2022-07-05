@@ -7,15 +7,15 @@ public class Pedido {
   private Pizza pizza;
   private Cliente cliente;
   
-  Pedido() {}
+  public Pedido() {}
   
-  Pedido(Pizza pizza, Cliente cliente) {
+  public Pedido(Pizza pizza, Cliente cliente) {
 	  setId();
 	  setPizza(pizza);
 	  setCliente(cliente);
   }
   
-  Pedido(int id, Pizza pizza, Cliente cliente) {
+  public Pedido(int id, Pizza pizza, Cliente cliente) {
 	  setId(id);
 	  setPizza(pizza);
 	  setCliente(cliente);

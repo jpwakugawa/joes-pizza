@@ -9,9 +9,9 @@ public class Cliente {
   private String cpf;
   private FormaDePagamento novaFP;
   
-  Cliente() {}
+  public Cliente() {}
   
-  Cliente(String nome, String endereco, String cpf, FormaDePagamento novaFP) {
+  public Cliente(String nome, String endereco, String cpf, FormaDePagamento novaFP) {
 	  setId();
 	  setNome(nome);
 	  setEndereco(endereco);
@@ -19,7 +19,7 @@ public class Cliente {
 	  setNovaFP(novaFP);
   }
   
-  Cliente(int id, String nome, String endereco, String cpf, FormaDePagamento novaFP) {
+  public Cliente(int id, String nome, String endereco, String cpf, FormaDePagamento novaFP) {
 	  setId(id);
 	  setNome(nome);
 	  setEndereco(endereco);

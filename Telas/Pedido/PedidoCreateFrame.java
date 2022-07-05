@@ -1,12 +1,10 @@
-package Pedido;
-import javax.swing.*;
-import Cliente.Cliente;
-import FormaDePagamento.FormaDePagamento;
-import Pizza.Pizza;
-import Principal.Gerenciador;
+package Telas.Pedido;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import Principal.Gerenciador;
+import Entidades.*;
 
 public class PedidoCreateFrame extends JFrame{
 	JLabel clienteLabel, pizzaLabel, status;

@@ -1,9 +1,10 @@
-package Pizza;
+package Telas.Pizza;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import javax.swing.*;
 import Principal.Gerenciador;
+import Entidades.*;
 
 public class PizzaUpdateFrame extends JFrame{
 	JLabel avisoLabel, idLabel, SaborLabel, precoLabel, status;

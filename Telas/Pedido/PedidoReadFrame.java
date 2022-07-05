@@ -1,16 +1,16 @@
-package Cliente;
+package Telas.Pedido;
 
 import javax.swing.*;
 import java.awt.event.*;
-import Principal.Gerenciador;
 import java.util.ArrayList;
+import Principal.Gerenciador;
+import Entidades.*;
 
-// Janela para mostrar lista de clientes
-public class ClienteReadFrame extends JFrame {
+public class PedidoReadFrame extends JFrame{
 	JLabel    status;
 	JTextArea area;
 	
-	public ClienteReadFrame(JLabel status) {
+	public PedidoReadFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();
@@ -19,29 +19,29 @@ public class ClienteReadFrame extends JFrame {
 	}
 	
 	private void configJanela() {
-		setTitle("Lista de Clientes");
-		setSize(1000, 800);
+		setTitle("Lista de Pedidos");
+		setSize(1100, 800);
 		setLayout(null);
-		status.setText("Listando Clientes");
+		status.setText("Listando Pedidos");
 	}
 	
 	private void configComponente() {
-		ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+		ArrayList<Pedido> listaDeClientes = Gerenciador.getListaDePedidos();
 		String lista = "";
 		
 		for(int i=0; i<listaDeClientes.size(); i++) {
-			Cliente clienteAtual = listaDeClientes.get(i);
-			lista += clienteAtual.toString() + "\n";
+			Pedido pedidoAtual = listaDeClientes.get(i);
+			lista += pedidoAtual.toString() + "\n";
 		}
 		
 		if (lista.equals("") ) {
-			area = new JTextArea("Nenhum cliente cadastrado...");
+			area = new JTextArea("Nenhum pedido cadastrado...");
 		}
 		else {
 			area = new JTextArea(lista);
 		}
 		
-		area.setBounds(50, 50, 900, 500);
+		area.setBounds(50, 50, 1000, 500);
 		add(area);
 	}
 	

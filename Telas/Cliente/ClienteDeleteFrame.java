@@ -1,16 +1,18 @@
-package Pizza;
-import javax.swing.*;
+package Telas.Cliente;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import Principal.Gerenciador;
+import Entidades.*;
 
-public class PizzaDeleteFrame extends JFrame {
+// Janela para realizar deleção de cliente
+public class ClienteDeleteFrame extends JFrame {
 	JLabel     avisoLabel, idLabel, status;
 	JTextField idText;
-	JButton armazenarButton;
+	JButton    submitButton;
 	
-	public PizzaDeleteFrame(JLabel status) {
+	public ClienteDeleteFrame(JLabel status) {
 		this.status = status;
 		configJanela();
 		configComponente();
@@ -19,15 +21,14 @@ public class PizzaDeleteFrame extends JFrame {
 	}
 	
 	private void configJanela() {
-		setTitle("Deletar Pizza");
+		setTitle("Deleção de Clientes");
 		setSize(500, 500);
 		setLayout(null);
-		status.setText("Deletando Pizza");
-	
+		status.setText("Deletando Clientes");
 	}
 	
 	private void configComponente() {
-		avisoLabel = new JLabel("Insira o ID da Pizza");
+		avisoLabel = new JLabel("Insira o ID do cliente para deletar!");
 		avisoLabel.setBounds(30, 10, 300, 30);
 		
 		idLabel = new JLabel("Id: ");
@@ -35,15 +36,14 @@ public class PizzaDeleteFrame extends JFrame {
 		idText = new JTextField();
 		idText.setBounds(110, 100, 200, 30);
 		
-		armazenarButton = new JButton("Deletar");
-		armazenarButton.setBounds(110, 150, 200, 30);
-		armazenarButton.addActionListener(new ButtonClickListener());
+		
+		submitButton = new JButton("delete");
+		submitButton.setBounds(110, 150, 200, 30);
+		submitButton.addActionListener(new ButtonClickListener());
 		
 		add(avisoLabel);add(idLabel);
-		add(idText);add(armazenarButton);
-		
-	}
-	
+		add(idText);add(submitButton);
+	}	
 	private void configEvento() {
 		addWindowListener(new WindowAdapter(){
 	        public void windowClosing(WindowEvent e){
@@ -54,30 +54,30 @@ public class PizzaDeleteFrame extends JFrame {
 	
 	private void end() {
 		setVisible(true);
-	
 	}
 	
 	private class ButtonClickListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();
-			
-			if( command.equals( "Deletar" ) )  {
+			String command = e.getActionCommand();  
+
+			if( command.equals( "delete" ) )  {
 				try {
 					int id = Integer.parseInt(idText.getText());
-					ArrayList<Pizza>listaDePizza = Gerenciador.getListaDePizzas();
-					listaDePizza.remove(id);
-				
-					for(int i=0; i<listaDePizza.size(); i++) {
-						Pizza novaPizza = listaDePizza.get(i);
-						novaPizza.setId(novaPizza.getId());
+					ArrayList<Cliente> listaDeClientes = Gerenciador.getListaDeClientes();
+					listaDeClientes.remove(id);
+					
+					for(int i=0; i<listaDeClientes.size(); i++) {
+						Cliente clienteAtual = listaDeClientes.get(i);
+						clienteAtual.setId(i);
 					}
 					
-					status.setText("Pizza Deletada!");
+					status.setText("Cliente Deletado!");					
 				} catch (Exception exception) {
 					status.setText(exception.getMessage());
 				}
-					
-			}
+
+	         }
 		}
-	}	
+   }
+
 }

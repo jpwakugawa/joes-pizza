@@ -1,9 +1,10 @@
-package FormaDePagamento;
+package Telas.FormasDePagamento;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import Principal.Gerenciador;
+import Entidades.*;
 
 public class FormaDePagamentoDeleteFrame extends JFrame {
 	JTextField idText;
