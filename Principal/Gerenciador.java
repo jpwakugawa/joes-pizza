@@ -1,10 +1,7 @@
 package Principal;
 
-import Cliente.*;
-import Pedido.*;
-import Pizza.*;
-import FormaDePagamento.*;
 import java.util.ArrayList;
+import Entidades.*;
 
 public class Gerenciador {
 	static ArrayList<Cliente> listaDeClientes;
